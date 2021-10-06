@@ -13,7 +13,7 @@ public class MediaNotas {
         float media;
         String message;
 
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < notes.length; i++) {
             System.out.println("Digite a " + (i+1) + "ª nota: ");
             notes[i] = scan.nextFloat();
             soma += notes[i];
