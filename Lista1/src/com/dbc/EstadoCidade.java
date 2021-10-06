@@ -7,13 +7,13 @@ public class EstadoCidade {
         Scanner scan = new Scanner(System.in);
 
         System.out.println("Escolha um estado entre RS, SC e PR:");
-        String escolha = scan.nextLine();
+        String escolha = scan.next();
 
 
         switch (escolha) {
             case "RS":
                 System.out.println("Escolha um estado entre Porto Alegre e Triunfo");
-                escolha = scan.nextLine();
+                escolha = scan.next();
                 if (escolha.equalsIgnoreCase("Porto Alegre")) {
                     System.out.println("População: 1492530");
                     System.out.println("Prefeito: Sebastião Melo");
@@ -30,7 +30,7 @@ public class EstadoCidade {
                 break;
             case "SC":
                 System.out.println("Escolha um estado entre Florianopolis e Itajai");
-                escolha = scan.nextLine();
+                escolha = scan.next();
                 if (escolha.equalsIgnoreCase("Florianopolis")) {
                     System.out.println("População: 516524");
                     System.out.println("Prefeito: Gean Loureiro");
@@ -47,7 +47,7 @@ public class EstadoCidade {
                 break;
             case "PR":
                 System.out.println("Escolha uma ciade entre Curitiba e Londrina");
-                escolha = scan.nextLine();
+                escolha = scan.next();
                 if (escolha.equalsIgnoreCase("Curitiba")) {
                     System.out.println("População: 1963726");
                     System.out.println("Prefeito: Rafael Greca");
@@ -63,7 +63,7 @@ public class EstadoCidade {
                 }
                 break;
             default:
-                System.out.println("Estado inválido!");
+                System.out.println("Cidade inválido!");
                 break;
         }
     }

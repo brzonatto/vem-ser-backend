@@ -7,7 +7,7 @@ public class Tradutor {
         Scanner scan = new Scanner(System.in);
 
         System.out.println("Digite um palavra: ");
-        String palavra = scan.nextLine();
+        String palavra = scan.next();
 
         switch (palavra) {
             case "Cachorro":

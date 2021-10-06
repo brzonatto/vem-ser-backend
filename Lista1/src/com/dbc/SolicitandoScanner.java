@@ -7,14 +7,14 @@ public class SolicitandoScanner {
         Scanner scan = new Scanner(System.in);
 
         System.out.println("Digite seu nome: ");
-        String nome = scan.nextLine();
+        String nome = scan.next();
         System.out.println("Digite sua idade: ");
         int idade = scan.nextInt();
-        scan.nextLine();
+//        scan.nextLine();
         System.out.println("Digite sua cidade: ");
-        String cidade = scan.nextLine();
+        String cidade = scan.next();
         System.out.println("Digite seu estado: ");
-        String estado = scan.nextLine();
+        String estado = scan.next();
 
         System.out.println("Olá seu nome é " + nome + ", você tem " + idade + " anos, é da cidade de " + cidade + ", situada " +
                 "no estado de " + estado +".");
