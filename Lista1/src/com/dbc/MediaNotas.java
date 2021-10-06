@@ -31,4 +31,7 @@ public class MediaNotas {
 
         System.out.println("Nota: " + media + ", portanto, " + message);
     }
+
+    public static class Salario {
+    }
 }
