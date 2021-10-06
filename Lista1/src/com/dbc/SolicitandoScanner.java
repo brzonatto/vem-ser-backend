@@ -10,7 +10,6 @@ public class SolicitandoScanner {
         String nome = scan.next();
         System.out.println("Digite sua idade: ");
         int idade = scan.nextInt();
-//        scan.nextLine();
         System.out.println("Digite sua cidade: ");
         String cidade = scan.next();
         System.out.println("Digite seu estado: ");
