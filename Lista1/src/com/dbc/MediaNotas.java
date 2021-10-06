@@ -8,15 +8,15 @@ public class MediaNotas {
         Scanner scan = new Scanner(System.in);
         scan.useLocale(Locale.US);
 
-        float notas[] = new float[4];
+        float[] notes = new float[4];
         float soma = 0;
         float media;
-        String message = "";
+        String message;
 
         for (int i = 0; i < 4; i++) {
             System.out.println("Digite a " + (i+1) + "ª nota: ");
-            notas[i] = scan.nextFloat();
-            soma += notas[i];
+            notes[i] = scan.nextFloat();
+            soma += notes[i];
         }
 
         media = soma / 4;
