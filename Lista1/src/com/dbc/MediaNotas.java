@@ -21,17 +21,14 @@ public class MediaNotas {
 
         media = soma / 4;
 
-        if (media <= 5) {
+        if (media < 5.1) {
             message = "reprovado!";
-        } else if (media <= 6.9 && media >= 5.1) {
+        } else if (media < 7 && media >= 5.1) {
             message = "em exame!";
         } else {
             message = "aprovado!";
         }
 
         System.out.println("Nota: " + media + ", portanto, " + message);
-    }
-
-    public static class Salario {
     }
 }
