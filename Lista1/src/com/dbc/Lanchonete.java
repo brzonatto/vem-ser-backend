@@ -18,6 +18,6 @@ public class Lanchonete {
 
         System.out.printf(valorPago < valorTotal
                 ? "O valor pago deve ser maior ou igual ao valor consumido."
-                : "R$%.2f",valorPago - valorTotal);
+                : "R$%.2f", valorPago - valorTotal);
     }
 }
