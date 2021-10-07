@@ -28,7 +28,7 @@ public class Jogadores {
             System.out.println("Digite o peso: ");
             double peso = scan.nextDouble();
 
-            totalJogadores += 1;
+            totalJogadores++;
             somaAltura += altura;
             if (altura > alturaMaior) {
                 alturaMaior = altura;
