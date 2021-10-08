@@ -28,7 +28,7 @@ public class Endereco {
         } else if (this.tipo == 2) {
             tipoNome = "Comercial";
         }
-        System.out.println("Endereço Tipo: " + tipoNome + "\n" + this.toString());
+        System.out.println("Endereço Tipo: " + tipoNome + "\n" + this);
     }
 
     @Override

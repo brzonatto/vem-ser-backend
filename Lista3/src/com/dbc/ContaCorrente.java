@@ -22,7 +22,7 @@ public class ContaCorrente {
 
     public void imprimirContaCorrente() {
         System.out.println("Proprietário da conta: " + this.cliente.nome);
-        System.out.println(this.toString());
+        System.out.println(this);
     }
 
     public Boolean sacar(Double valor) {

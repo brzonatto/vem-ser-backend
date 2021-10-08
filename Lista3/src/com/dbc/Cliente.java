@@ -26,7 +26,7 @@ public class Cliente {
     }
 
     public void imprimirCliente() {
-        System.out.println(this.toString());
+        System.out.println(this);
         System.out.println("------------------------------");
         this.imprimirEnderecos();
         System.out.println("------------------------------");

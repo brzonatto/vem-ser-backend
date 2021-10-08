@@ -18,7 +18,7 @@ public class Contato {
         } else if (this.tipo == 2) {
             tipoNome = "Comercial";
         }
-        System.out.println("Contato Tipo: " + tipoNome + "\n" + this.toString());
+        System.out.println("Contato Tipo: " + tipoNome + "\n" + this);
     }
 
     @Override
