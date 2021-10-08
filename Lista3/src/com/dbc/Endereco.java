@@ -22,6 +22,22 @@ public class Endereco {
     }
 
     public void imprimirEndereco() {
-
+        String tipoNome = "";
+        if (this.tipo == 1) {
+            tipoNome = "Residêncial";
+        } else if (this.tipo == 2) {
+            tipoNome = "Comercial";
+        }
+        System.out.println("Endereço Tipo: " + tipoNome + "\n" + this.toString());
     }
+
+    @Override
+    public String toString() {
+        return this.logradouro + ", " + this.numero + ", " + this.complemento + ", " + this.cep + " - " + this.cidade
+            + "-" + this.estado + " - " + this.pais;
+    }
+
 }
+
+
+
