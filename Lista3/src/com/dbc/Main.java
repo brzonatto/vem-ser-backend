@@ -46,6 +46,7 @@ public class Main {
 
         contaCorrente2.imprimirContaCorrente();
         contaCorrente2.depositar(5000.00);
+        contaCorrente2.sacar(0.00);
         contaCorrente2.imprimirContaCorrente();
         contaCorrente2.sacar(500.00);
         contaCorrente2.imprimirContaCorrente();
@@ -61,10 +62,7 @@ public class Main {
         System.out.println("--------------------------------------------------------------------------------");
 
         contaCorrente1.transferir(contaCorrente2, 520.00);
-        contaCorrente1.imprimirContaCorrente();
-        contaCorrente2.imprimirContaCorrente();
         contaCorrente2.transferir(contaCorrente1, 1200.00);
-        contaCorrente1.imprimirContaCorrente();
-        contaCorrente2.imprimirContaCorrente();
+
     }
 }

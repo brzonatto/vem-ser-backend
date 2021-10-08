@@ -29,7 +29,7 @@ public class ContaCorrente {
         if (valor > 0) {
             Double somaDeSaldos = this.retornarSaldoComChegueEspecial();
             if (valor > somaDeSaldos) {
-                System.err.println("Falha no saque! Saldo insuficiente.");
+                System.out.println("Falha no saque! Saldo insuficiente.");
                 return false;
             } else {
                 if (valor < saldo) {
@@ -39,10 +39,11 @@ public class ContaCorrente {
                     this.saldo = 0.0;
                     this.chequeEspecial -= valor;
                 }
+                System.out.println("Saque efetuado com sucesso!");
                 return true;
             }
         } else {
-            System.err.println("Falha no saque! Valor deve ser positivo e maior que R$0,00.");
+            System.out.println("Falha no saque! Valor deve ser positivo e maior que R$0,00.");
             return false;
         }
     }
@@ -60,9 +61,10 @@ public class ContaCorrente {
             } else {
                 this.saldo += valor;
             }
+            System.out.println("Deposito Efetuado com sucesso!");
             return true;
         } else {
-            System.err.println("Falha no deposito! Valor deve ser positivo e maior que R$0,00.");
+            System.out.println("Falha no deposito! Valor deve ser positivo e maior que R$0,00.");
             return false;
         }
     }
@@ -74,6 +76,8 @@ public class ContaCorrente {
     public Boolean transferir(ContaCorrente contaCorrente, Double valor) {
         this.sacar(valor);
         contaCorrente.depositar(valor);
+        this.imprimirContaCorrente();
+        contaCorrente.imprimirContaCorrente();
         return true;
     }
 
