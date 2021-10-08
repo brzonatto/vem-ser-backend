@@ -6,22 +6,35 @@ public class Cliente {
     public Contato[] contatos;
     public Endereco[] enderecos;
 
-    public Cliente(String nome, String cpf, Contato[] contatos, Endereco[] enderecos) {
+    public Cliente(String nome, String cpf) {
         this.nome = nome;
         this.cpf = cpf;
-        this.contatos = contatos;
-        this.enderecos = enderecos;
+        contatos = new Contato[2];
+        enderecos = new Endereco[2];
     }
 
     public void imprimirContatos() {
-
+        for (Contato key : contatos) {
+            key.imprimirContato();
+        }
     }
 
     public void imprimirEnderecos() {
-
+        for (Endereco key : enderecos) {
+            key.imprimirEndereco();
+        }
     }
 
     public void imprimirCliente() {
+        System.out.println(this.toString());
+        System.out.println("------------------------------");
+        this.imprimirEnderecos();
+        System.out.println("------------------------------");
+        this.imprimirContatos();
+    }
 
+    @Override
+    public String toString() {
+        return "Nome: " + this.nome + ", CPF: " + cpf;
     }
 }
