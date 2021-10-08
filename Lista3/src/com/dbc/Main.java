@@ -25,9 +25,7 @@ public class Main {
         ContaCorrente contaCorrente1 = new ContaCorrente(cliente1, "123456", 2115, 0.00, 500.00);
         ContaCorrente contaCorrente2 = new ContaCorrente(cliente2, "654321", 2115, 0.00, 500.00);
 
-
         // OPERAÇÕES
-
         contaCorrente1.imprimirContaCorrente();
         contaCorrente1.depositar(2000.00);
         contaCorrente1.imprimirContaCorrente();
