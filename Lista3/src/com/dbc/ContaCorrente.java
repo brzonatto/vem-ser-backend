@@ -26,29 +26,42 @@ public class ContaCorrente {
     }
 
     public Boolean sacar(Double valor) {
-        Double somaDeSaldos = this.retornarSaldoComChegueEspecial();
-        if (valor > somaDeSaldos) {
-            return false;
-        } else {
-            if (valor < saldo) {
-                this.saldo -= valor;
+        if (valor > 0) {
+            Double somaDeSaldos = this.retornarSaldoComChegueEspecial();
+            if (valor > somaDeSaldos) {
+                return false;
             } else {
-                valor = valor - saldo;
-                this.saldo = 0.0;
-                this.chequeEspecial -= valor;
+                if (valor < saldo) {
+                    this.saldo -= valor;
+                } else {
+                    valor = valor - saldo;
+                    this.saldo = 0.0;
+                    this.chequeEspecial -= valor;
+                }
+                return true;
             }
-            return true;
+        } else {
+            return false;
         }
     }
 
     public Boolean depositar(Double valor) {
-        if (this.chequeEspecial != this.creditoChequeEspecial) {
-            Double saldo = creditoChequeEspecial - chequeEspecial;
-            chequeEspecial += saldo;
-            valor -= saldo;
-            this.saldo += valor;
+        if (valor > 0) {
+            Double diferenca = 0.0;
+            if(this.chequeEspecial < this.creditoChequeEspecial) {
+                this.chequeEspecial += valor;
+                diferenca = this.chequeEspecial - this.creditoChequeEspecial;
+                if (diferenca > 0 ) {
+                    this.chequeEspecial -= diferenca;
+                    this.saldo += diferenca;
+                }
+            } else {
+                this.saldo += valor;
+            }
+            return true;
+        } else {
+            return false;
         }
-        return true;
     }
 
     public Double retornarSaldoComChegueEspecial() {
@@ -56,6 +69,8 @@ public class ContaCorrente {
     }
 
     public Boolean transferir(ContaCorrente contaCorrente, Double valor) {
+        this.sacar(valor);
+        contaCorrente.depositar(valor);
         return true;
     }
 
