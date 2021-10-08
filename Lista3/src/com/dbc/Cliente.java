@@ -15,13 +15,18 @@ public class Cliente {
 
     public void imprimirContatos() {
         for (Contato key : contatos) {
-            key.imprimirContato();
+            if (key != null) {
+                key.imprimirContato();
+            }
         }
     }
 
     public void imprimirEnderecos() {
+
         for (Endereco key : enderecos) {
-            key.imprimirEndereco();
+            if (key != null) {
+                key.imprimirEndereco();
+            }
         }
     }
 
