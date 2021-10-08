@@ -22,7 +22,6 @@ public class Cliente {
     }
 
     public void imprimirEnderecos() {
-
         for (Endereco key : enderecos) {
             if (key != null) {
                 key.imprimirEndereco();

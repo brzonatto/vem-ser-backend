@@ -9,7 +9,7 @@ public class ContaCorrente {
     public Double saldo;
     public Double chequeEspecial;
     public Double creditoChequeEspecial;
-    DecimalFormat df = new DecimalFormat("#,##0.00");
+    public DecimalFormat df = new DecimalFormat("#,##0.00");
 
     public ContaCorrente(Cliente cliente, String numeroConta, Integer agencia, Double saldo, Double chequeEspecial) {
         this.cliente = cliente;
@@ -29,6 +29,7 @@ public class ContaCorrente {
         if (valor > 0) {
             Double somaDeSaldos = this.retornarSaldoComChegueEspecial();
             if (valor > somaDeSaldos) {
+                System.err.println("Falha no saque! Saldo insuficiente.");
                 return false;
             } else {
                 if (valor < saldo) {
@@ -41,6 +42,7 @@ public class ContaCorrente {
                 return true;
             }
         } else {
+            System.err.println("Falha no saque! Valor deve ser positivo e maior que R$0,00.");
             return false;
         }
     }
@@ -60,6 +62,7 @@ public class ContaCorrente {
             }
             return true;
         } else {
+            System.err.println("Falha no deposito! Valor deve ser positivo e maior que R$0,00.");
             return false;
         }
     }

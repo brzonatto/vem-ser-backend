@@ -4,6 +4,7 @@ import java.text.DecimalFormat;
 
 public class Main {
     public static void main(String[] args) {
+        // INSTÂNCIAS
         Cliente cliente1 = new Cliente("Brunno", "121.417.725-59");
         cliente1.enderecos[0] = new Endereco(2, "Rua Jõao José Maria", 222,
                 "Bloco H", "120345-222", "Porto Alegre", "RS", "Brasil");
@@ -21,40 +22,49 @@ public class Main {
         cliente2.contatos[0] = new Contato("Claro", "5198909365", 2);
         cliente2.contatos[1] = new Contato("Tim", "5199325335", 1);
 
-        ContaCorrente contaCorrente1 = new ContaCorrente(cliente1, "123456", 2115, 1000.00, 500.00);
-        ContaCorrente contaCorrente2 = new ContaCorrente(cliente2, "654321", 2115, 1000.00, 250.00);
+        ContaCorrente contaCorrente1 = new ContaCorrente(cliente1, "123456", 2115, 0.00, 500.00);
+        ContaCorrente contaCorrente2 = new ContaCorrente(cliente2, "654321", 2115, 0.00, 500.00);
+
+
+        // OPERAÇÕES
 
         contaCorrente1.imprimirContaCorrente();
-        System.out.println("--------------------------------------------------------------------------------");
-        contaCorrente2.imprimirContaCorrente();
-
-        contaCorrente1.transferir(contaCorrente2, 200.00);
-
-        System.out.println("--------------------------------------------------------------------------------");
+        contaCorrente1.depositar(2000.00);
         contaCorrente1.imprimirContaCorrente();
-        System.out.println("--------------------------------------------------------------------------------");
-        contaCorrente2.imprimirContaCorrente();
-
-        contaCorrente2.sacar(1450.00);
-
-        System.out.println("--------------------------------------------------------------------------------");
-        contaCorrente2.imprimirContaCorrente();
-
-        contaCorrente1.transferir(contaCorrente2, 300.00);
-
-        System.out.println("--------------------------------------------------------------------------------");
+        contaCorrente1.sacar(500.00);
         contaCorrente1.imprimirContaCorrente();
+        contaCorrente1.sacar(1750.00);
+        contaCorrente1.imprimirContaCorrente();
+        contaCorrente1.depositar(100.00);
+        contaCorrente1.imprimirContaCorrente();
+        contaCorrente1.depositar(200.00);
+        contaCorrente1.imprimirContaCorrente();
+        contaCorrente1.depositar(1050.25);
+        contaCorrente1.imprimirContaCorrente();
+
         System.out.println("--------------------------------------------------------------------------------");
+
+        contaCorrente2.imprimirContaCorrente();
+        contaCorrente2.depositar(5000.00);
+        contaCorrente2.imprimirContaCorrente();
+        contaCorrente2.sacar(500.00);
+        contaCorrente2.imprimirContaCorrente();
+        contaCorrente2.sacar(1750.00);
+        contaCorrente2.imprimirContaCorrente();
+        contaCorrente2.depositar(100.00);
+        contaCorrente2.imprimirContaCorrente();
+        contaCorrente2.depositar(200.00);
+        contaCorrente2.imprimirContaCorrente();
+        contaCorrente2.depositar(1050.25);
         contaCorrente2.imprimirContaCorrente();
 
+        System.out.println("--------------------------------------------------------------------------------");
 
-
-
-
-
-
-
-
-
+        contaCorrente1.transferir(contaCorrente2, 520.00);
+        contaCorrente1.imprimirContaCorrente();
+        contaCorrente2.imprimirContaCorrente();
+        contaCorrente2.transferir(contaCorrente1, 1200.00);
+        contaCorrente1.imprimirContaCorrente();
+        contaCorrente2.imprimirContaCorrente();
     }
 }
