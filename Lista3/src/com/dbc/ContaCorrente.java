@@ -74,11 +74,15 @@ public class ContaCorrente {
     }
 
     public Boolean transferir(ContaCorrente contaCorrente, Double valor) {
-        this.sacar(valor);
-        contaCorrente.depositar(valor);
-        this.imprimirContaCorrente();
-        contaCorrente.imprimirContaCorrente();
-        return true;
+        if (this.sacar(valor)) {
+            contaCorrente.depositar(valor);
+            this.imprimirContaCorrente();
+            contaCorrente.imprimirContaCorrente();
+            return true;
+        } else {
+            System.out.println("Falha na transferência!");
+            return false;
+        }
     }
 
     @Override

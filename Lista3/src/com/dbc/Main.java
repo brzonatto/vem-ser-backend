@@ -61,6 +61,5 @@ public class Main {
 
         contaCorrente1.transferir(contaCorrente2, 520.00);
         contaCorrente2.transferir(contaCorrente1, 1200.00);
-
     }
 }
