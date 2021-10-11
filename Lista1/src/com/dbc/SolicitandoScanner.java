@@ -9,7 +9,7 @@ public class SolicitandoScanner {
         System.out.println("Digite seu nome: ");
         String nome = scan.next();
         System.out.println("Digite sua idade: ");
-        int idade = scan.nextInt();
+        int idade = scan.nextInt();		
         System.out.println("Digite sua cidade: ");
         String cidade = scan.next();
         System.out.println("Digite seu estado: ");
