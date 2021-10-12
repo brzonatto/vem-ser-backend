@@ -11,7 +11,6 @@ public class Caixa {
 
     }
 
-
     public Boolean ehValido(Double valorTotal, Double valorPago) {
         if (valorPago < valorTotal) {
             return false;
