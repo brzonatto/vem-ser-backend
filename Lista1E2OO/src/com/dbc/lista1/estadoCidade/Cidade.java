@@ -58,4 +58,10 @@ public class Cidade {
     public void setIdh(Double idh) {
         this.idh = idh;
     }
+
+    @Override
+    public String toString() {
+        return "\nCidade: " + this.nome + "\nPopulação: " + this.populacao + "\nPrefeito: " + this.prefeito
+                    + "\nÁrea: " + this.area + "\nIDH: " + this.idh;
+    }
 }

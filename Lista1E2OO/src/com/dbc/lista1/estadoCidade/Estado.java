@@ -2,15 +2,15 @@ package com.dbc.lista1.estadoCidade;
 
 public class Estado {
     private String nome;
-    private Cidade[] cidade;
+    private Cidade[] cidades;
 
     public Estado() {
 
     }
 
-    public Estado(String nome, Cidade[] cidade) {
+    public Estado(String nome, Cidade[] cidades) {
         this.nome = nome;
-        this.cidade = cidade;
+        this.cidades = cidades;
     }
 
     public String getNome() {
@@ -21,11 +21,25 @@ public class Estado {
         this.nome = nome;
     }
 
-    public Cidade[] getCidade() {
-        return cidade;
+    public Cidade[] getCidades() {
+        return cidades;
     }
 
-    public void setCidade(Cidade[] cidade) {
-        this.cidade = cidade;
+    public void setCidade(Cidade[] cidades) {
+        this.cidades = cidades;
+    }
+
+    public Boolean existeCidade(String nomeCidade) {
+        for (int i = 0; i < this.cidades.length; i++) {
+            if(this.cidades[i].getNome().equalsIgnoreCase(nomeCidade)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public String toString() {
+        return "Estado: " + this.nome;
     }
 }
