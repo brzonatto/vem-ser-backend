@@ -64,6 +64,6 @@ public class Salario {
 
     @Override
     public String toString() {
-        return "R$" + Utils.formatarDouble(calculaSalario());
+        return Utils.formatarDouble(calculaSalario());
     }
 }
