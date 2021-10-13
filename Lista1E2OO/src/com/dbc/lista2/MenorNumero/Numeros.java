@@ -1,4 +1,4 @@
-package com.dbc.lista2.MenoNumero;
+package com.dbc.lista2.MenorNumero;
 
 import java.util.Locale;
 import java.util.Scanner;

@@ -1,4 +1,4 @@
-package com.dbc.lista2.MenoNumero;
+package com.dbc.lista2.MenorNumero;
 
 public class Main {
     public static void main(String[] args) {
