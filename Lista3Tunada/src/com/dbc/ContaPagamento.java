@@ -12,8 +12,7 @@ public class ContaPagamento extends Conta implements Impressao {
     @Override
     public Boolean sacar(Double valor) {
         if ((valor + TAXA_SAQUE) < this.getSaldo()) {
-            this.setSaldo(this.getSaldo() - TAXA_SAQUE);
-            return super.sacar(valor);
+            return super.sacar(valor + TAXA_SAQUE);
         }
         System.out.println("Saldo insuficiente! É necessario o pagamento da taxa de " + Utils.formatarDouble(TAXA_SAQUE)
                 + " para realizar uma transação de saque ou tranferencia.");
