@@ -61,7 +61,7 @@ public abstract class Conta implements Movimentacao {
 
     @Override
     public Boolean depositar(Double valor) {
-        if (this instanceof ContaPoupanca) {
+        if (this instanceof ContaPoupanca || this instanceof ContaPagamento) {
             if (valor > 0) {
                 this.saldo += valor;
                 System.out.println("Deposito efetuado com sucesso!");
