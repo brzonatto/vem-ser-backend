@@ -49,21 +49,62 @@ public abstract class Conta implements Movimentacao {
 
     @Override
     public Boolean sacar(Double valor) {
-        return null;
+        if (valor > 0 && valor <= this.saldo) {
+            this.saldo -= valor;
+            System.out.println("Saque efetuado com sucesso!");
+            return true;
+        } else {
+            System.out.println("Falha no saque! Valor deve ser positivo e maior que R$0,00.");
+            return false;
+        }
     }
 
     @Override
     public Boolean depositar(Double valor) {
-        return null;
-    }
-    @Override
-    public Boolean transferir(Conta conta, Double valor) {
-        return null;
+        if (this instanceof ContaPoupanca) {
+            if (valor > 0) {
+                this.saldo += valor;
+                System.out.println("Deposito efetuado com sucesso!");
+                return true;
+            } else {
+                System.out.println("Falha no deposito! Valor deve ser positivo e maior que R$0,00.");
+                return false;
+            }
+        } else if (this instanceof ContaCorrente) {
+            if (valor > 0) {
+                Double diferenca = 0.0;
+                if(((ContaCorrente)this).getChequeEspecial() < ((ContaCorrente)this).getCreditoChequeEspecial()) {
+                    ((ContaCorrente)this).setChequeEspecial(((ContaCorrente)this).getChequeEspecial() + valor);
+                    diferenca = ((ContaCorrente)this).getChequeEspecial() - ((ContaCorrente)this).getCreditoChequeEspecial();
+                    if (diferenca > 0 ) {
+                        ((ContaCorrente)this).setChequeEspecial(((ContaCorrente)this).getChequeEspecial() - diferenca);
+                        this.setSaldo(diferenca + this.getSaldo());
+                    }
+                } else {
+                    this.setSaldo(this.getSaldo() + valor);
+                }
+                System.out.println("Deposito Efetuado com sucesso!");
+                return true;
+            } else {
+                System.out.println("Falha no deposito! Valor deve ser positivo e maior que R$0,00.");
+                return false;
+            }
+        } else {
+            System.out.println("Falha no deposito! Conta inválida!");
+            return false;
+        }
+
     }
 
     @Override
-    public String toString() {
-        return "Número da conta: " + this.numeroConta + " Número da Agência: " + this.agencia
-                + " Saldo: " + Utils.formatarDouble(this.saldo);
+    public Boolean transferir(Conta conta, Double valor) {
+        if (this.sacar(valor)) {
+            conta.depositar(valor);
+            System.out.println("Transferido com sucesso!");
+            return true;
+        } else {
+            System.out.println("Falha na transferência!");
+            return false;
+        }
     }
 }
