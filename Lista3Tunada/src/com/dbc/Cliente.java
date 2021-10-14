@@ -9,8 +9,8 @@ public class Cliente {
     public Cliente(String nome, String cpf) {
         this.nome = nome;
         this.cpf = cpf;
-        contatos = new Contato[2];
-        enderecos = new Endereco[2];
+        this.contatos = new Contato[2];
+        this.enderecos = new Endereco[2];
     }
 
     public String getNome() {
