@@ -73,11 +73,11 @@ public abstract class Conta implements Movimentacao {
         } else if (this instanceof ContaCorrente) {
             if (valor > 0) {
                 Double diferenca = 0.0;
-                if(((ContaCorrente)this).getChequeEspecial() < ((ContaCorrente)this).getCreditoChequeEspecial()) {
-                    ((ContaCorrente)this).setChequeEspecial(((ContaCorrente)this).getChequeEspecial() + valor);
-                    diferenca = ((ContaCorrente)this).getChequeEspecial() - ((ContaCorrente)this).getCreditoChequeEspecial();
-                    if (diferenca > 0 ) {
-                        ((ContaCorrente)this).setChequeEspecial(((ContaCorrente)this).getChequeEspecial() - diferenca);
+                if (((ContaCorrente) this).getChequeEspecial() < ((ContaCorrente) this).getCreditoChequeEspecial()) {
+                    ((ContaCorrente) this).setChequeEspecial(((ContaCorrente) this).getChequeEspecial() + valor);
+                    diferenca = ((ContaCorrente) this).getChequeEspecial() - ((ContaCorrente) this).getCreditoChequeEspecial();
+                    if (diferenca > 0) {
+                        ((ContaCorrente) this).setChequeEspecial(((ContaCorrente) this).getChequeEspecial() - diferenca);
                         this.setSaldo(diferenca + this.getSaldo());
                     }
                 } else {
@@ -93,7 +93,6 @@ public abstract class Conta implements Movimentacao {
             System.out.println("Falha no deposito! Conta inválida!");
             return false;
         }
-
     }
 
     @Override
