@@ -3,26 +3,10 @@ package com.dbc;
 public class Main {
     public static void main(String[] args) {
         // INSTÂNCIAS
-        Cliente cliente1 = new Cliente("Brunno", "121.417.725-59");
-        cliente1.getEnderecos()[0] = new Endereco(2, "Rua Jõao José Maria", 222,
-                "Bloco H", "120345-222", "Porto Alegre", "RS", "Brasil");
-        cliente1.getEnderecos()[1] = new Endereco(1, "Rua Oloco", 333,
-                "Bloco J", "170385-222", "Porto Alegre", "RS", "Brasil");
-        cliente1.getContatos()[0] = new Contato("Oi", "5198442365", 2);
-        cliente1.getContatos()[1] = new Contato("Vivo", "5194542335", 1);
+        ContaCorrente cc1 = ccBrunno();
+        ContaPagamento cpag1 = cpagBrunno();
+        ContaPoupanca cp2 = cpCarol();
 
-
-        Cliente cliente2 = new Cliente("Caroline", "151.677.909-05");
-        cliente2.getEnderecos()[0] = new Endereco(2, "Rua Seila", 323,
-                "Bloco P", "123455-252", "Porto Alegre", "RS", "Brasil");
-        cliente2.getEnderecos()[1] = new Endereco(1, "Rua Oloquinho Meu", 443,
-                "Bloco K", "17455-562", "Porto Alegre", "RS", "Brasil");
-        cliente2.getContatos()[0] = new Contato("Claro", "5198909365", 2);
-        cliente2.getContatos()[1] = new Contato("Tim", "5199325335", 1);
-
-        ContaPagamento cpag1 = new ContaPagamento(cliente1, "123456", "5555", 1000.00);
-        ContaCorrente cc1 = new ContaCorrente(cliente1, "121212", "5555", 1000.00, 500.00);
-        ContaPoupanca cp2 = new ContaPoupanca(cliente2, "654321", "6868", 1000.00);
 
         // TRANSAÇAO NA CONTA
         cpag1.depositar(200.00);
@@ -60,5 +44,41 @@ public class Main {
         cp2.imprimir();
         cpag1.imprimir();
         System.out.println("---------------------");
+    }
+
+    public static ContaCorrente ccBrunno() {
+        Cliente cliente1 = new Cliente("Brunno", "121.417.725-59");
+        cliente1.getEnderecos()[0] = new Endereco(2, "Rua Jõao José Maria", 222,
+                "Bloco H", "120345-222", "Porto Alegre", "RS", "Brasil");
+        cliente1.getEnderecos()[1] = new Endereco(1, "Rua Oloco", 333,
+                "Bloco J", "170385-222", "Porto Alegre", "RS", "Brasil");
+        cliente1.getContatos()[0] = new Contato("Oi", "5198442365", 2);
+        cliente1.getContatos()[1] = new Contato("Vivo", "5194542335", 1);
+
+        return new ContaCorrente(cliente1, "121212", "5555", 1000.00, 5000.00);
+    }
+
+    public static ContaPagamento cpagBrunno() {
+        Cliente cliente1 = new Cliente("Brunno", "121.417.725-59");
+        cliente1.getEnderecos()[0] = new Endereco(2, "Rua Jõao José Maria", 222,
+                "Bloco H", "120345-222", "Porto Alegre", "RS", "Brasil");
+        cliente1.getEnderecos()[1] = new Endereco(1, "Rua Oloco", 333,
+                "Bloco J", "170385-222", "Porto Alegre", "RS", "Brasil");
+        cliente1.getContatos()[0] = new Contato("Oi", "5198442365", 2);
+        cliente1.getContatos()[1] = new Contato("Vivo", "5194542335", 1);
+
+        return new ContaPagamento(cliente1, "121212", "5555", 1000.00);
+    }
+
+    public static ContaPoupanca cpCarol() {
+        Cliente cliente2 = new Cliente("Caroline", "151.677.909-05");
+        cliente2.getEnderecos()[0] = new Endereco(2, "Rua Seila", 323,
+                "Bloco P", "123455-252", "Porto Alegre", "RS", "Brasil");
+        cliente2.getEnderecos()[1] = new Endereco(1, "Rua Oloquinho Meu", 443,
+                "Bloco K", "17455-562", "Porto Alegre", "RS", "Brasil");
+        cliente2.getContatos()[0] = new Contato("Claro", "5198909365", 2);
+        cliente2.getContatos()[1] = new Contato("Tim", "5199325335", 1);
+
+        return  new ContaPoupanca(cliente2, "654321", "6868", 1000.00);
     }
 }
