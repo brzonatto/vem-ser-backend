@@ -1,0 +1,465 @@
+{
+	"info": {
+		"_postman_id": "c47745d2-f3ae-4b04-96f8-a3762ec0b592",
+		"name": "homework1_1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/comments",
+			"item": [
+				{
+					"name": "/comments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{jsonPlaceHolder}}/comments",
+							"host": [
+								"{{jsonPlaceHolder}}"
+							],
+							"path": [
+								"comments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/comments",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Brunno\",\r\n    \"email\": \"brzonatto@gmail.com\",\r\n    \"body\": \"Novo comentário!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{jsonPlaceHolder}}/comments",
+							"host": [
+								"{{jsonPlaceHolder}}"
+							],
+							"path": [
+								"comments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/comments/id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Brunno\",\r\n    \"email\": \"brzonatto@gmail.com\",\r\n    \"body\": \"Comentário 2 editado!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{jsonPlaceHolder}}/comments/2",
+							"host": [
+								"{{jsonPlaceHolder}}"
+							],
+							"path": [
+								"comments",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/comments/id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{jsonPlaceHolder}}/comments/5",
+							"host": [
+								"{{jsonPlaceHolder}}"
+							],
+							"path": [
+								"comments",
+								"5"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "/albuns",
+			"item": [
+				{
+					"name": "/albums",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{jsonPlaceHolder}}/albums",
+							"host": [
+								"{{jsonPlaceHolder}}"
+							],
+							"path": [
+								"albums"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/albums",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": 2,\r\n    \"title\": \"Novo album!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{jsonPlaceHolder}}/albums",
+							"host": [
+								"{{jsonPlaceHolder}}"
+							],
+							"path": [
+								"albums"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/albums/id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": \"5\",\r\n    \"title\": \"Album atualizado!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{jsonPlaceHolder}}/albums/3",
+							"host": [
+								"{{jsonPlaceHolder}}"
+							],
+							"path": [
+								"albums",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/albums/id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{jsonPlaceHolder}}/albums/5",
+							"host": [
+								"{{jsonPlaceHolder}}"
+							],
+							"path": [
+								"albums",
+								"5"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "/photos",
+			"item": [
+				{
+					"name": "/photos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{jsonPlaceHolder}}/photos",
+							"host": [
+								"{{jsonPlaceHolder}}"
+							],
+							"path": [
+								"photos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/photos",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"albumId\": 1,    \r\n    \"title\": \"Novo foto\",\r\n    \"url\": \"Nova url da foto\",\r\n    \"thumbnailUrl\": \"novo tumbnail da foto\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{jsonPlaceHolder}}/photos",
+							"host": [
+								"{{jsonPlaceHolder}}"
+							],
+							"path": [
+								"photos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/photos/id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{        \r\n    \"title\": \"Atulização do titulo da foto\",\r\n    \"url\": \"Novo URL\",\r\n    \"thumbnailUrl\": \"Nova thumb\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{jsonPlaceHolder}}/photos/7",
+							"host": [
+								"{{jsonPlaceHolder}}"
+							],
+							"path": [
+								"photos",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/photos/id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{jsonPlaceHolder}}/photos/12",
+							"host": [
+								"{{jsonPlaceHolder}}"
+							],
+							"path": [
+								"photos",
+								"12"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "/todos",
+			"item": [
+				{
+					"name": "/todos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{jsonPlaceHolder}}/todos",
+							"host": [
+								"{{jsonPlaceHolder}}"
+							],
+							"path": [
+								"todos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/todos",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{    \r\n    \"title\": \"Novo TODO\",\r\n    \"completed\": true\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{jsonPlaceHolder}}/todos",
+							"host": [
+								"{{jsonPlaceHolder}}"
+							],
+							"path": [
+								"todos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/todos/id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{jsonPlaceHolder}}/todos/36",
+							"host": [
+								"{{jsonPlaceHolder}}"
+							],
+							"path": [
+								"todos",
+								"36"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/todos/id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{jsonPlaceHolder}}/todos/45",
+							"host": [
+								"{{jsonPlaceHolder}}"
+							],
+							"path": [
+								"todos",
+								"45"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "/users",
+			"item": [
+				{
+					"name": "/users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{jsonPlaceHolder}}/users",
+							"host": [
+								"{{jsonPlaceHolder}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/users",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Brunno Zonatto\",\r\n    \"username\": \"brzonatto\",\r\n    \"email\": \"brzonatto@gmail.com\",\r\n    \"address\": {\r\n        \"street\": \"Nova rua\",\r\n        \"suite\": \"Apt. 186\",\r\n        \"city\": \"POA\",\r\n        \"zipcode\": \"58588-3874\",\r\n        \"geo\": {\r\n            \"lat\": \"-447.4459\",\r\n            \"lng\": \"441.1496\"\r\n        }\r\n    },\r\n    \"phone\": \"51 99999-9999\",\r\n    \"website\": \"Elchapo.org\",\r\n    \"company\": {\r\n        \"name\": \"DBC\",\r\n        \"catchPhrase\": \"o lokinho meu\",\r\n        \"bs\": \"o loko meu\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{jsonPlaceHolder}}/users",
+							"host": [
+								"{{jsonPlaceHolder}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/users/id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Nome Atualizado\",\r\n    \"username\": \"NA\",\r\n    \"email\": \"NA@april.biz\",\r\n    \"address\": {\r\n      \"street\": \"SN\",\r\n      \"suite\": \"Apt. 556\",\r\n      \"city\": \"Gwenborough\",\r\n      \"zipcode\": \"92998-3874\",\r\n      \"geo\": {\r\n        \"lat\": \"-37.3159\",\r\n        \"lng\": \"81.1496\"\r\n      }\r\n    },\r\n    \"phone\": \"1-770-736-8031 x56442\",\r\n    \"website\": \"hildegard.org\",\r\n    \"company\": {\r\n      \"name\": \"Romaguera-Crona\",\r\n      \"catchPhrase\": \"Multi-layered client-server neural-net\",\r\n      \"bs\": \"harness real-time e-markets\"\r\n    }\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{jsonPlaceHolder}}/users/10",
+							"host": [
+								"{{jsonPlaceHolder}}"
+							],
+							"path": [
+								"users",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/users/id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{jsonPlaceHolder}}/users/5",
+							"host": [
+								"{{jsonPlaceHolder}}"
+							],
+							"path": [
+								"users",
+								"5"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
