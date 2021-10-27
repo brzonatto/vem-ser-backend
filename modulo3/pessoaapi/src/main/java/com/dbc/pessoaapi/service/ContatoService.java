@@ -12,8 +12,8 @@ public class ContatoService {
         contatoRepository = new ContatoRepository();
     }
 
-    public Contato create(Contato contato) {
-        return contatoRepository.create(contato);
+    public Contato create(Integer idPessoa, Contato contato) {
+        return contatoRepository.create(idPessoa, contato);
     }
 
     public List<Contato> list() {
@@ -26,5 +26,9 @@ public class ContatoService {
 
     public void delete(Integer id) throws Exception {
         contatoRepository.delete(id);
+    }
+
+    public List<Contato> listByPessoa(Integer idPessoa) {
+        return contatoRepository.listByPessoa(idPessoa);
     }
 }

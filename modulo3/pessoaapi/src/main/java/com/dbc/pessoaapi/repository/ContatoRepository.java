@@ -1,17 +1,20 @@
 package com.dbc.pessoaapi.repository;
 
 import com.dbc.pessoaapi.entity.Contato;
+import com.dbc.pessoaapi.entity.TipoContato;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Collectors;
 
 public class ContatoRepository {
     private static List<Contato> listaContatos = new ArrayList<>();
     private AtomicInteger COUNTER = new AtomicInteger();
 
-    public Contato create(Contato contato) {
+    public Contato create(Integer idPessoa, Contato contato) {
         contato.setIdContato(COUNTER.incrementAndGet());
+        contato.setIdPessoa(idPessoa);
         listaContatos.add(contato);
         return contato;
     }
@@ -37,5 +40,11 @@ public class ContatoRepository {
                 .findFirst()
                 .orElseThrow(() -> new Exception("Contato não encontrado!"));
         listaContatos.remove(contatoRecuperado);
+    }
+
+    public List<Contato> listByPessoa(Integer idPessoa) {
+        return listaContatos.stream()
+                .filter(contato -> contato.getIdPessoa().equals(idPessoa))
+                .collect(Collectors.toList());
     }
 }
