@@ -1,7 +1,9 @@
 package com.dbc.pessoaapi.service;
 
 import com.dbc.pessoaapi.entity.Endereco;
+import com.dbc.pessoaapi.exceptions.RegraDeNegocioException;
 import com.dbc.pessoaapi.repository.EnderecoRepository;
+import com.dbc.pessoaapi.repository.PessoaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +14,11 @@ public class EnderecoService {
     @Autowired
     private EnderecoRepository enderecoRepository;
 
-    public Endereco create(Integer idPessoa, Endereco endereco) {
+    @Autowired
+    private PessoaRepository pessoaRepository;
+
+    public Endereco create(Integer idPessoa, Endereco endereco) throws RegraDeNegocioException {
+        pessoaRepository.listById(idPessoa);
         return enderecoRepository.create(idPessoa, endereco);
     }
 
@@ -28,11 +34,11 @@ public class EnderecoService {
         return enderecoRepository.listByPessoa(idPessoa);
     }
 
-    public void delete(Integer idEndereco) throws Exception {
+    public void delete(Integer idEndereco) throws RegraDeNegocioException {
         enderecoRepository.delete(idEndereco);
     }
 
-    public Endereco update(Integer idEndereco, Endereco enderecoAtualizado) throws Exception {
+    public Endereco update(Integer idEndereco, Endereco enderecoAtualizado) throws RegraDeNegocioException {
         return enderecoRepository.update(idEndereco, enderecoAtualizado);
     }
 }

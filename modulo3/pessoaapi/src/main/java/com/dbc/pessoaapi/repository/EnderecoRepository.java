@@ -1,6 +1,7 @@
 package com.dbc.pessoaapi.repository;
 
 import com.dbc.pessoaapi.entity.Endereco;
+import com.dbc.pessoaapi.exceptions.RegraDeNegocioException;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -37,19 +38,19 @@ public class EnderecoRepository {
                 .collect(Collectors.toList());
     }
 
-    public void delete(Integer idEndereco) throws Exception {
+    public void delete(Integer idEndereco) throws RegraDeNegocioException {
         Endereco enderecoRecuperado = listaEndereco.stream()
                 .filter(endereco -> endereco.getIdEndereco().equals(idEndereco))
                 .findFirst()
-                .orElseThrow(() -> new Exception("Endereço não encontrado!"));
+                .orElseThrow(() -> new RegraDeNegocioException("endereço não encontrado"));
         listaEndereco.remove(enderecoRecuperado);
     }
 
-    public Endereco update(Integer idEndereco, Endereco enderecoAtualizado) throws Exception {
+    public Endereco update(Integer idEndereco, Endereco enderecoAtualizado) throws RegraDeNegocioException {
         Endereco enderecoRecuperado = listaEndereco.stream()
                 .filter(endereco -> endereco.getIdEndereco().equals(idEndereco))
                 .findFirst()
-                .orElseThrow(() -> new Exception("Endereço não encontrado!"));
+                .orElseThrow(() -> new RegraDeNegocioException("endereço não encontrado"));
         enderecoRecuperado.setTipo(enderecoAtualizado.getTipo());
         enderecoRecuperado.setLogradouro(enderecoAtualizado.getLogradouro());
         enderecoRecuperado.setNumero(enderecoAtualizado.getNumero());
