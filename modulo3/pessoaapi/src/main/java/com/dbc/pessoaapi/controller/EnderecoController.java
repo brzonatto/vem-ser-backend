@@ -2,7 +2,6 @@ package com.dbc.pessoaapi.controller;
 
 import com.dbc.pessoaapi.dto.EnderecoCreateDTO;
 import com.dbc.pessoaapi.dto.EnderecoDTO;
-import com.dbc.pessoaapi.entity.EnderecoEntity;
 import com.dbc.pessoaapi.exceptions.RegraDeNegocioException;
 import com.dbc.pessoaapi.service.EnderecoService;
 import lombok.RequiredArgsConstructor;

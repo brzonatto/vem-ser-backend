@@ -3,17 +3,16 @@ package com.dbc.pessoaapi.dto;
 import com.dbc.pessoaapi.entity.TipoEndereco;
 import lombok.*;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class EnderecoCreateDTO {
     @NotNull
-    private TipoEndereco tipo;
+    @Min(0)
+    @Max(1)
+    private Integer tipo;
 
     @Size(max = 250, min = 1, message = "deve conter no máximo 250 caracteres")
     @NotEmpty

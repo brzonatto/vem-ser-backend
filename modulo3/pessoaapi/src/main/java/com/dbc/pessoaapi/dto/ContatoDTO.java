@@ -5,10 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 @Data
 @AllArgsConstructor
@@ -18,7 +15,9 @@ public class ContatoDTO {
     private Integer idPessoa;
 
     @NotNull
-    private TipoContato tipoContato;
+    @Min(0)
+    @Max(1)
+    private Integer tipoContato;
 
     @Size(max = 13, min = 1, message = "deve ter no máximo 13 números")
     @NotEmpty

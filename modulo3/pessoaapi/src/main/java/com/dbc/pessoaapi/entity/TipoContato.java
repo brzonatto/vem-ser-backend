@@ -1,5 +1,7 @@
 package com.dbc.pessoaapi.entity;
 
+import com.fasterxml.jackson.annotation.JsonValue;
+
 import java.util.Arrays;
 
 public enum TipoContato {
@@ -21,5 +23,10 @@ public enum TipoContato {
                 .filter(tp -> tp.getTipo().equals(tipo))
                 .findFirst()
                 .get();
+    }
+
+    @JsonValue
+    public int toValue() {
+        return ordinal();
     }
 }
