@@ -1,6 +1,6 @@
 package com.dbc.pessoaapi.repository;
 
-import com.dbc.pessoaapi.entity.Contato;
+import com.dbc.pessoaapi.entity.ContatoEntity;
 import com.dbc.pessoaapi.exceptions.RegraDeNegocioException;
 import org.springframework.stereotype.Repository;
 
@@ -11,42 +11,42 @@ import java.util.stream.Collectors;
 
 @Repository
 public class ContatoRepository {
-    private static List<Contato> listaContatos = new ArrayList<>();
+    private static List<ContatoEntity> listaContatoEntities = new ArrayList<>();
     private AtomicInteger COUNTER = new AtomicInteger();
 
-    public Contato create(Integer idPessoa, Contato contato) {
-        contato.setIdContato(COUNTER.incrementAndGet());
-        contato.setIdPessoa(idPessoa);
-        listaContatos.add(contato);
-        return contato;
+    public ContatoEntity create(Integer idPessoa, ContatoEntity contatoEntity) {
+        contatoEntity.setIdContato(COUNTER.incrementAndGet());
+        contatoEntity.setIdPessoa(idPessoa);
+        listaContatoEntities.add(contatoEntity);
+        return contatoEntity;
     }
 
-    public List<Contato> list() {
-        return listaContatos;
+    public List<ContatoEntity> list() {
+        return listaContatoEntities;
     }
 
-    public Contato update(Integer id, Contato contatoAtualizar) throws RegraDeNegocioException {
-        Contato contatoRecuperado = listaContatos.stream()
-                .filter(contato -> contato.getIdContato().equals(id))
+    public ContatoEntity update(Integer id, ContatoEntity contatoEntityAtualizar) throws RegraDeNegocioException {
+        ContatoEntity contatoEntityRecuperado = listaContatoEntities.stream()
+                .filter(contatoEntity -> contatoEntity.getIdContato().equals(id))
                 .findFirst()
                 .orElseThrow(() -> new RegraDeNegocioException("Contato não encontrado"));
-        contatoRecuperado.setTipoContato(contatoAtualizar.getTipoContato());
-        contatoRecuperado.setNumero(contatoAtualizar.getNumero());
-        contatoRecuperado.setDescricao(contatoAtualizar.getDescricao());
-        return contatoRecuperado;
+        contatoEntityRecuperado.setTipoContato(contatoEntityAtualizar.getTipoContato());
+        contatoEntityRecuperado.setNumero(contatoEntityAtualizar.getNumero());
+        contatoEntityRecuperado.setDescricao(contatoEntityAtualizar.getDescricao());
+        return contatoEntityRecuperado;
     }
 
     public void delete(Integer id) throws RegraDeNegocioException {
-        Contato contatoRecuperado = listaContatos.stream()
-                .filter(contato -> contato.getIdContato().equals(id))
+        ContatoEntity contatoEntityRecuperado = listaContatoEntities.stream()
+                .filter(contatoEntity -> contatoEntity.getIdContato().equals(id))
                 .findFirst()
                 .orElseThrow(() -> new RegraDeNegocioException("Contato não encontrado"));
-        listaContatos.remove(contatoRecuperado);
+        listaContatoEntities.remove(contatoEntityRecuperado);
     }
 
-    public List<Contato> listByPessoa(Integer idPessoa) {
-        return listaContatos.stream()
-                .filter(contato -> contato.getIdPessoa().equals(idPessoa))
+    public List<ContatoEntity> listByPessoa(Integer idPessoa) {
+        return listaContatoEntities.stream()
+                .filter(contatoEntity -> contatoEntity.getIdPessoa().equals(idPessoa))
                 .collect(Collectors.toList());
     }
 }

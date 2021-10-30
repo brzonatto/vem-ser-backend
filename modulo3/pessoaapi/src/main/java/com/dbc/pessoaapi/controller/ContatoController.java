@@ -1,12 +1,12 @@
 package com.dbc.pessoaapi.controller;
 
-import com.dbc.pessoaapi.entity.Contato;
+import com.dbc.pessoaapi.dto.ContatoCreateDTO;
+import com.dbc.pessoaapi.dto.ContatoDTO;
 import com.dbc.pessoaapi.exceptions.RegraDeNegocioException;
 import com.dbc.pessoaapi.service.ContatoService;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,33 +16,41 @@ import java.util.List;
 @RestController
 @RequestMapping("/contato")
 @Validated
+@RequiredArgsConstructor
+@Slf4j
 public class ContatoController {
-    @Autowired
-    private ContatoService contatoService;
+    private final ContatoService contatoService;
 
     @PostMapping("/{idPessoa}")
-    public ResponseEntity<Contato> create(@PathVariable("idPessoa") Integer idPessoa, @RequestBody @Valid Contato contato) throws RegraDeNegocioException {
-        Contato contatoCriado = contatoService.create(idPessoa, contato);
-        return new ResponseEntity<>(contatoCriado, HttpStatus.CREATED);
+    public ContatoDTO create(@PathVariable("idPessoa") Integer idPessoa, @RequestBody @Valid ContatoCreateDTO contatoCreateDTO) throws RegraDeNegocioException {
+        log.info("criando contato");
+        ContatoDTO contatoCriado = contatoService.create(idPessoa, contatoCreateDTO);
+        log.info("contato criado");
+        return contatoCriado;
     }
 
     @GetMapping
-    public List<Contato> list() {
+    public List<ContatoDTO> list() {
         return contatoService.list();
     }
 
     @DeleteMapping("/{idContato}")
     public void delete(@PathVariable("idContato") Integer id) throws RegraDeNegocioException {
+        log.info("deletando contato");
         contatoService.delete(id);
+        log.info("contato deletado");
     }
 
     @GetMapping("/{idPessoa}")
-    public List<Contato> listByPessoa(@PathVariable("idPessoa") Integer idPessoa) {
+    public List<ContatoDTO> listByPessoa(@PathVariable("idPessoa") Integer idPessoa) {
         return contatoService.listByPessoa(idPessoa);
     }
 
     @PutMapping("/{idContato}")
-    public Contato update(@PathVariable("idContato") Integer idContato, @RequestBody Contato contatoAtualizar) throws RegraDeNegocioException {
-        return contatoService.update(idContato, contatoAtualizar);
+    public ContatoDTO update(@PathVariable("idContato") Integer idContato, @RequestBody ContatoCreateDTO contatoCreateDTO) throws RegraDeNegocioException {
+        log.info("atualizando contato");
+        ContatoDTO contatoDTO = contatoService.update(idContato, contatoCreateDTO);
+        log.info("contato atualizado");
+        return contatoDTO;
     }
 }
