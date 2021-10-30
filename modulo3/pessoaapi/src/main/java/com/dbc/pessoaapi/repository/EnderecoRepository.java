@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class EnderecoRepository {
     private static List<EnderecoEntity> listaEnderecoEntity = new ArrayList<>();
-    private final AtomicInteger COUNTER;
+    private AtomicInteger COUNTER = new AtomicInteger();
 
     public EnderecoEntity create(Integer idPessoa, EnderecoEntity enderecoEntity) throws RegraDeNegocioException{
         enderecoEntity.setIdEndereco(COUNTER.incrementAndGet());
