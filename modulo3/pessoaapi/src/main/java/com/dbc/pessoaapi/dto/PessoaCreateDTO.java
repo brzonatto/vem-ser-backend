@@ -23,4 +23,9 @@ public class PessoaCreateDTO {
     @NotEmpty
     @NotBlank
     private String cpf;
+
+    @Email
+    @NotEmpty
+    @NotBlank
+    private String email;
 }

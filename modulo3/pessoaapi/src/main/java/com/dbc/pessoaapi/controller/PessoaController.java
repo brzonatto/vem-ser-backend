@@ -3,13 +3,17 @@ package com.dbc.pessoaapi.controller;
 import com.dbc.pessoaapi.dto.PessoaCreateDTO;
 import com.dbc.pessoaapi.dto.PessoaDTO;
 import com.dbc.pessoaapi.exceptions.RegraDeNegocioException;
+import com.dbc.pessoaapi.service.EmailService;
 import com.dbc.pessoaapi.service.PessoaService;
+import freemarker.template.TemplateException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.mail.MessagingException;
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -20,13 +24,14 @@ import java.util.List;
 public class PessoaController {
     private final PessoaService pessoaService;
 
+
     @GetMapping("/hello")
     public String hello() {
         return "Hello world!";
     }
 
     @PostMapping
-    public PessoaDTO create(@RequestBody @Valid PessoaCreateDTO pessoaCreateDTO) throws RegraDeNegocioException {
+    public PessoaDTO create(@RequestBody @Valid PessoaCreateDTO pessoaCreateDTO) throws RegraDeNegocioException, MessagingException, TemplateException, IOException {
         log.info("criando pessoa");
         PessoaDTO pessoaCriada = pessoaService.create(pessoaCreateDTO);
         log.info("pessoa criada");
@@ -45,7 +50,7 @@ public class PessoaController {
 
     @PutMapping("/{idPessoa}")
     public PessoaDTO update(@PathVariable("idPessoa") Integer id,
-                            @RequestBody @Valid PessoaCreateDTO pessoaCreateDTO) throws RegraDeNegocioException {
+                            @RequestBody @Valid PessoaCreateDTO pessoaCreateDTO) throws RegraDeNegocioException, MessagingException, TemplateException, IOException {
         log.info("atualizando pessoa");
         PessoaDTO pessoaDTO = pessoaService.update(id, pessoaCreateDTO);
         log.info("pessoa atualizada");
@@ -53,7 +58,7 @@ public class PessoaController {
     }
 
     @DeleteMapping("/{idPessoa}")
-    public void delete(@PathVariable("idPessoa") Integer id) throws RegraDeNegocioException {
+    public void delete(@PathVariable("idPessoa") Integer id) throws RegraDeNegocioException, MessagingException, TemplateException, IOException {
         log.info("Deletando pessoa");
         pessoaService.delete(id);
         log.info("pessoa deletada");
