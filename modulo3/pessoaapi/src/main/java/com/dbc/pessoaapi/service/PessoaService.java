@@ -29,7 +29,7 @@ public class PessoaService {
         String message = "<br><br>Estamos felizes em ter você em nosso sistema :)" +
                 "<br>Seu cadastro foi realizado com sucesso, seu " +
                 "identificador é " + pessoaDTO.getIdPessoa() + ".";
-        emailService.sendEmailPessoa(pessoaDTO, message , "Bem-Vindo!");
+//        emailService.sendEmailPessoa(pessoaDTO, message , "Bem-Vindo!");
         return pessoaDTO;
     }
 
@@ -44,7 +44,7 @@ public class PessoaService {
         PessoaEntity entity = objectMapper.convertValue(pessoaCreateDTO, PessoaEntity.class);
         PessoaEntity update = pessoaRepository.update(id, entity);
         PessoaDTO pessoaDTO = objectMapper.convertValue(update, PessoaDTO.class);
-        emailService.sendEmailPessoa(pessoaDTO, "Seus dados foram atualizados no nosso sistema.", "Dados atualizados!");
+//        emailService.sendEmailPessoa(pessoaDTO, "Seus dados foram atualizados no nosso sistema.", "Dados atualizados!");
         return pessoaDTO;
     }
 
@@ -52,7 +52,7 @@ public class PessoaService {
         PessoaEntity pessoaEntity = pessoaRepository.listById(id);
         PessoaDTO pessoaDTO = objectMapper.convertValue(pessoaEntity, PessoaDTO.class);
         pessoaRepository.delete(id);
-        emailService.sendEmailPessoa(pessoaDTO, "<br><br>Você perdeu o acesso ao nosso sistema.<br>", "Acesso perdido!");
+//        emailService.sendEmailPessoa(pessoaDTO, "<br><br>Você perdeu o acesso ao nosso sistema.<br>", "Acesso perdido!");
     }
 
     public List<PessoaDTO> listByName(String nome) {
