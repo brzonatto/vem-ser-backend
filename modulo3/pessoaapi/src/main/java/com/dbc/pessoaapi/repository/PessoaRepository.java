@@ -42,6 +42,7 @@ public class PessoaRepository {
         pessoaEntityRecuperada.setCpf(pessoaEntityAtualizar.getCpf());
         pessoaEntityRecuperada.setNome(pessoaEntityAtualizar.getNome());
         pessoaEntityRecuperada.setDataNascimento(pessoaEntityAtualizar.getDataNascimento());
+        pessoaEntityRecuperada.setEmail(pessoaEntityAtualizar.getEmail());
         return pessoaEntityRecuperada;
     }
 

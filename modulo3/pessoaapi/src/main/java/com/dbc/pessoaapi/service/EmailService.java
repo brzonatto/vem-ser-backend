@@ -23,6 +23,7 @@ import java.util.Map;
 public class EmailService {
     @Value("${spring.mail.username}")
     private String remetente;
+
     private final JavaMailSender emailSender;
     private final Configuration configuration;
 
