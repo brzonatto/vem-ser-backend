@@ -31,7 +31,7 @@ public class EmailService {
 
         MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);
 
-        helper.setFrom(remetente);
+        helper.setFrom(remetente, "Pessoa API");
         helper.setTo(pessoaDTO.getEmail());
         helper.setSubject(subject);
 
