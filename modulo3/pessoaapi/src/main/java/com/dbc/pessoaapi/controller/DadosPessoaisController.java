@@ -53,4 +53,26 @@ public class DadosPessoaisController {
     public DadosPessoaisDTO create(@RequestBody DadosPessoaisDTO dadosPessoaisDTO) {
         return dadosPessoaisService.create(dadosPessoaisDTO);
     }
+
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Atualiza dados pessoais"),
+            @ApiResponse(code = 400, message = "CPF não encontrado"),
+            @ApiResponse(code = 500, message = "Foi gerada uma exceção no sistema")
+    })
+    @ApiOperation("Atualiza dados pessoais do CPF especificado por parâmetro")
+    @PutMapping("/{cpf}")
+    public DadosPessoaisDTO update(@PathVariable("cpf") String cpf, @RequestBody DadosPessoaisDTO dadosPessoaisDTO) {
+        return dadosPessoaisService.update(cpf, dadosPessoaisDTO);
+    }
+
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Deleta dados pessoais"),
+            @ApiResponse(code = 400, message = "CPF não encontrado"),
+            @ApiResponse(code = 500, message = "Foi gerada uma exceção no sistema")
+    })
+    @ApiOperation("Deleta dados pessoais do CPF especificado por parâmetro")
+    @DeleteMapping("/{cpf}")
+    public void delete(@PathVariable("cpf") String cpf) {
+        dadosPessoaisService.delete(cpf);
+    }
 }
