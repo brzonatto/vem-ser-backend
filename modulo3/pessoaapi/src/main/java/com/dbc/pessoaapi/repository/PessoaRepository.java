@@ -66,4 +66,11 @@ public class PessoaRepository {
                 .findFirst()
                 .orElseThrow(() -> new RegraDeNegocioException("Pessoa não econtrada"));
     }
+
+    public PessoaEntity getByCPF(String cpf) throws RegraDeNegocioException {
+        return listaPessoaEntities.stream()
+                .filter(pessoa -> pessoa.getCpf().equals(cpf))
+                .findFirst()
+                .orElseThrow(() -> new RegraDeNegocioException("Pessoa não encontrada"));
+    }
 }

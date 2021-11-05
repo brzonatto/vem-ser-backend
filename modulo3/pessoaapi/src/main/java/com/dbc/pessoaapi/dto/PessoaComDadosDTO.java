@@ -12,8 +12,6 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PessoaComDadosDTO {
-    private Integer idPessoa;
-
     @Past
     @NotNull
     @ApiModelProperty("Data de nascimento da pessoa, formato AAAA-MM-DD")
