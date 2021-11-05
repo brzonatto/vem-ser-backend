@@ -49,11 +49,10 @@ public class PessoaComDadosService {
         dadosPessoaisClient.put(cpf, pessoaComDadosDTO.getDadosPessoaisDTO());
         PessoaEntity entity = pessoaRepository.getByCPF(cpf);
         entity.setNome(pessoaComDadosDTO.getDadosPessoaisDTO().getNome());
-        entity.setCpf(pessoaComDadosDTO.getDadosPessoaisDTO().getCpf());
+        entity.setCpf(cpf);
         PessoaEntity update = pessoaRepository.update(entity.getIdPessoa(), entity);
         PessoaComDadosDTO pessoaAtualizada = objectMapper.convertValue(update, PessoaComDadosDTO.class);
         pessoaAtualizada.setDadosPessoaisDTO(pessoaComDadosDTO.getDadosPessoaisDTO());
-        
         dadosPessoaisClient.put(cpf, pessoaAtualizada.getDadosPessoaisDTO());
         return pessoaAtualizada;
     }
