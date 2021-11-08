@@ -1,0 +1,345 @@
+{
+	"info": {
+		"_postman_id": "9e6d8511-29b0-4394-b329-41dd171a7fc3",
+		"name": "pessoa-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/contato",
+			"item": [
+				{
+					"name": "/contato/id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{8080}}/contato/2",
+							"host": [
+								"{{8080}}"
+							],
+							"path": [
+								"contato",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/contato/id",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tipoContato\": \"COMERCIAL\",\r\n    \"numero\": \"048995343243\",\r\n    \"descricao\": \"Casa\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{8080}}/contato/8",
+							"host": [
+								"{{8080}}"
+							],
+							"path": [
+								"contato",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/contato/id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{8080}}/contato/1",
+							"host": [
+								"{{8080}}"
+							],
+							"path": [
+								"contato",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/contato",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{8080}}/contato",
+							"host": [
+								"{{8080}}"
+							],
+							"path": [
+								"contato"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/contato/id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tipoContato\": \"COMERCIAL\",\r\n    \"numero\": \"048995343243\",\r\n    \"descricao\": \"Casa\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{8080}}/contato/1",
+							"host": [
+								"{{8080}}"
+							],
+							"path": [
+								"contato",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "/pessoa",
+			"item": [
+				{
+					"name": "/pessoa",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{8080}}/pessoa",
+							"host": [
+								"{{8080}}"
+							],
+							"path": [
+								"pessoa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/pessoa",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Maicon Gerardi\",\r\n    \"dataNascimento\": \"2025-10-10\",\r\n    \"cpf\": \"1234567891\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{8080}}/pessoa",
+							"host": [
+								"{{8080}}"
+							],
+							"path": [
+								"pessoa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/pessoa/id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{8080}}/pessoa/6",
+							"host": [
+								"{{8080}}"
+							],
+							"path": [
+								"pessoa",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/pessoa/id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Maicon Gerardi\",\r\n    \"dataNascimento\": \"1990-10-10\",\r\n    \"cpf\": \"12345678910\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{8080}}/pessoa/1",
+							"host": [
+								"{{8080}}"
+							],
+							"path": [
+								"pessoa",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "/endereco",
+			"item": [
+				{
+					"name": "/endereco/id",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tipo\": \"COMERCIAL\",\r\n    \"logradouro\": \"Rua 7\",\r\n    \"numero\": \"598\",\r\n    \"complemento\": \"Apto. 150\",\r\n    \"cep\": \"99999999\",\r\n    \"cidade\": \"Porto Alegre\",\r\n    \"estado\": \"Rio Grande do Sul\",\r\n    \"pais\": \"Brasil\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{8080}}/endereco/2",
+							"host": [
+								"{{8080}}"
+							],
+							"path": [
+								"endereco",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/endereco",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{8080}}/endereco",
+							"host": [
+								"{{8080}}"
+							],
+							"path": [
+								"endereco"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/endereco/id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{8080}}/endereco/1",
+							"host": [
+								"{{8080}}"
+							],
+							"path": [
+								"endereco",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/endereco/id/pessoa",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{8080}}/endereco/1/pessoa",
+							"host": [
+								"{{8080}}"
+							],
+							"path": [
+								"endereco",
+								"1",
+								"pessoa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/endereco/id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{8080}}/endereco/3",
+							"host": [
+								"{{8080}}"
+							],
+							"path": [
+								"endereco",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/endereco/id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tipo\": \"COMERCIAL\",\r\n    \"logradouro\": \"Rua 20\",\r\n    \"numero\": \"598\",\r\n    \"complemento\": \"Apto. 150\",\r\n    \"cep\": \"99999999\",\r\n    \"cidade\": \"Porto Alegre\",\r\n    \"estado\": \"Rio Grande do Sul\",\r\n    \"pais\": \"Brasil\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{8080}}/endereco/1",
+							"host": [
+								"{{8080}}"
+							],
+							"path": [
+								"endereco",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
