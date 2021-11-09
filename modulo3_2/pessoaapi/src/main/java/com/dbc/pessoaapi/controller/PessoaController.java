@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.mail.MessagingException;
 import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import java.io.IOException;
 import java.util.List;
 
@@ -59,7 +61,7 @@ public class PessoaController {
     })
     @ApiOperation("Mostra todas as pessoas cadastradas no sistema que contenham o nome especificado por parâmetro")
     @GetMapping("/byname")
-    public List<PessoaDTO> listByName(@RequestParam("nome") String nome) {
+    public List<PessoaDTO> listByName(@RequestParam("nome") @NotBlank @NotEmpty String nome) {
         return pessoaService.listByName(nome);
     }
 

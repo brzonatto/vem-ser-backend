@@ -21,7 +21,7 @@ public class EnderecoService {
     private final ObjectMapper objectMapper;
 
     public EnderecoDTO create(Integer idPessoa, EnderecoCreateDTO enderecoCreateDTO) throws RegraDeNegocioException {
-        pessoaRepository.listById(idPessoa);
+//        pessoaRepository.listById(idPessoa);
         EnderecoEntity enderecoEntity = objectMapper.convertValue(enderecoCreateDTO, EnderecoEntity.class);
         EnderecoEntity enderecoCriado = enderecoRepository.create(idPessoa, enderecoEntity);
         EnderecoDTO enderecoDTO = objectMapper.convertValue(enderecoCriado, EnderecoDTO.class);

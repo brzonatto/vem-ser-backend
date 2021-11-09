@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import javax.mail.MessagingException;
 import java.io.IOException;
 import java.util.List;
+import java.util.Locale;
 import java.util.stream.Collectors;
 
 @Service
@@ -22,44 +23,61 @@ public class PessoaService {
     private final PessoaRepository pessoaRepository;
     private final EmailService emailService;
 
-    public PessoaDTO create(PessoaCreateDTO pessoaCreateDTO) throws RegraDeNegocioException, MessagingException, TemplateException, IOException {
+    public PessoaDTO create(PessoaCreateDTO pessoaCreateDTO)
+            throws RegraDeNegocioException, MessagingException, TemplateException, IOException {
         PessoaEntity pessoaEntity = objectMapper.convertValue(pessoaCreateDTO, PessoaEntity.class);
-        PessoaEntity pessoaCriada = pessoaRepository.create(pessoaEntity);
+        PessoaEntity pessoaCriada = pessoaRepository.save(pessoaEntity);
         PessoaDTO pessoaDTO = objectMapper.convertValue(pessoaCriada, PessoaDTO.class);
-        String message = "<br><br>Estamos felizes em ter você em nosso sistema :)" +
-                "<br>Seu cadastro foi realizado com sucesso, seu " +
-                "identificador é " + pessoaDTO.getIdPessoa() + ".";
+//        String message = "<br><br>Estamos felizes em ter você em nosso sistema :)" +
+//                "<br>Seu cadastro foi realizado com sucesso, seu " +
+//                "identificador é " + pessoaDTO.getIdPessoa() + ".";
 //        emailService.sendEmailPessoa(pessoaDTO, message , "Bem-Vindo!");
         return pessoaDTO;
     }
 
     public List<PessoaDTO> list() {
-        return pessoaRepository.list().stream()
+        return pessoaRepository.findAll()
+                .stream()
                 .map(pessoa -> objectMapper.convertValue(pessoa, PessoaDTO.class))
                 .collect(Collectors.toList());
     }
 
-    public PessoaDTO update(Integer id,
-                            PessoaCreateDTO pessoaCreateDTO) throws RegraDeNegocioException, MessagingException, TemplateException, IOException {
+    public PessoaDTO getById(Integer id) throws RegraDeNegocioException {
+        PessoaEntity entity = findById(id);
+        PessoaDTO dto = objectMapper.convertValue(entity, PessoaDTO.class);
+        return dto;
+    }
+
+    public PessoaEntity findById(Integer id) throws RegraDeNegocioException {
+        PessoaEntity entity = pessoaRepository.findById(id)
+                .orElseThrow(() -> new RegraDeNegocioException("pessoa não encontrada"));
+        return entity;
+    }
+
+    public PessoaDTO update(Integer id, PessoaCreateDTO pessoaCreateDTO)
+            throws RegraDeNegocioException, MessagingException, TemplateException, IOException {
+        findById(id);
         PessoaEntity entity = objectMapper.convertValue(pessoaCreateDTO, PessoaEntity.class);
-        PessoaEntity update = pessoaRepository.update(id, entity);
+        entity.setIdPessoa(id);
+        PessoaEntity update = pessoaRepository.save(entity);
         PessoaDTO pessoaDTO = objectMapper.convertValue(update, PessoaDTO.class);
 //        emailService.sendEmailPessoa(pessoaDTO, "Seus dados foram atualizados no nosso sistema.", "Dados atualizados!");
         return pessoaDTO;
     }
 
-    public void delete(Integer id) throws RegraDeNegocioException, MessagingException, TemplateException, IOException {
-        PessoaEntity pessoaEntity = pessoaRepository.listById(id);
-        PessoaDTO pessoaDTO = objectMapper.convertValue(pessoaEntity, PessoaDTO.class);
-        pessoaRepository.delete(id);
+    public void delete(Integer id)
+            throws RegraDeNegocioException, MessagingException, TemplateException, IOException {
+        PessoaEntity pessoaEntity = findById(id);
+        pessoaRepository.delete(pessoaEntity);
 //        emailService.sendEmailPessoa(pessoaDTO, "<br><br>Você perdeu o acesso ao nosso sistema.<br>", "Acesso perdido!");
     }
 
     public List<PessoaDTO> listByName(String nome) {
-        return pessoaRepository.listByName(nome).stream()
+        return pessoaRepository.findAll()
+                .stream()
+                .filter(pessoa -> pessoa.getNome().toLowerCase().contains(nome.toLowerCase()))
+                .collect(Collectors.toList()).stream()
                 .map(pessoa -> objectMapper.convertValue(pessoa, PessoaDTO.class))
                 .collect(Collectors.toList());
     }
-
-
 }
