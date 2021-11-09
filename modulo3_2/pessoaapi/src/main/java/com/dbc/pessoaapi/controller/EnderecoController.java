@@ -29,10 +29,10 @@ public class EnderecoController {
             @ApiResponse(code = 500, message = "Foi gerada uma exceção no sistema")
     })
     @ApiOperation("Cria um novo endereço pelo ID da pessoa especificado por parâmetro")
-    @PostMapping("/{idPessoa}")
-    public EnderecoDTO create(@PathVariable("idPessoa") Integer idPessoa, @RequestBody @Valid EnderecoCreateDTO enderecoCreateDTO) throws RegraDeNegocioException {
+    @PostMapping()
+    public EnderecoDTO create(@RequestBody @Valid EnderecoCreateDTO enderecoCreateDTO) throws RegraDeNegocioException {
         log.info("criando endereço");
-        EnderecoDTO enderecoDTO = enderecoService.create(idPessoa, enderecoCreateDTO);
+        EnderecoDTO enderecoDTO = enderecoService.create(enderecoCreateDTO);
         log.info("endereço criado");
         return enderecoDTO;
     }
@@ -48,27 +48,27 @@ public class EnderecoController {
         return enderecoService.list();
     }
 
-    @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Mostra o endereço"),
-            @ApiResponse(code = 400, message = "Endereço não encontrado"),
-            @ApiResponse(code = 500, message = "Foi gerada uma exceção no sistema")
-    })
-    @ApiOperation("Mostra o endereço com o ID especificado por parâmetro")
-    @GetMapping("/{idEndereco}")
-    public EnderecoDTO listByEndereco(@PathVariable("idEndereco") Integer idEndereco) throws Exception {
-        return enderecoService.listByEndereco(idEndereco);
-    }
+//    @ApiResponses(value = {
+//            @ApiResponse(code = 200, message = "Mostra o endereço"),
+//            @ApiResponse(code = 400, message = "Endereço não encontrado"),
+//            @ApiResponse(code = 500, message = "Foi gerada uma exceção no sistema")
+//    })
+//    @ApiOperation("Mostra o endereço com o ID especificado por parâmetro")
+//    @GetMapping("/{idEndereco}")
+//    public EnderecoDTO listByEndereco(@PathVariable("idEndereco") Integer idEndereco) throws Exception {
+//        return enderecoService.listByEndereco(idEndereco);
+//    }
 
-    @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Mostra os endereços"),
-            @ApiResponse(code = 400, message = "Pessoa não encontrada"),
-            @ApiResponse(code = 500, message = "Foi gerada uma exceção no sistema")
-    })
-    @ApiOperation("Mostra os endereços com o ID da pessoa especificado por parâmetro")
-    @GetMapping("/{idPessoa}/pessoa")
-    public List<EnderecoDTO> listByPessoa(@PathVariable("idPessoa") Integer idPessoa) {
-        return enderecoService.listByPessoa(idPessoa);
-    }
+//    @ApiResponses(value = {
+//            @ApiResponse(code = 200, message = "Mostra os endereços"),
+//            @ApiResponse(code = 400, message = "Pessoa não encontrada"),
+//            @ApiResponse(code = 500, message = "Foi gerada uma exceção no sistema")
+//    })
+//    @ApiOperation("Mostra os endereços com o ID da pessoa especificado por parâmetro")
+//    @GetMapping("/{idPessoa}/pessoa")
+//    public List<EnderecoDTO> listByPessoa(@PathVariable("idPessoa") Integer idPessoa) {
+//        return enderecoService.listByPessoa(idPessoa);
+//    }
 
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Remove o endereço"),

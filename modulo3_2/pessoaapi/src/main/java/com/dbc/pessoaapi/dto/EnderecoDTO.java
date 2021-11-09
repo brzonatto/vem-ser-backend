@@ -10,7 +10,6 @@ import javax.validation.constraints.*;
 @NoArgsConstructor
 public class EnderecoDTO {
     private Integer idEndereco;
-    private Integer idPessoa;
 
     @NotNull
     @Min(0)
