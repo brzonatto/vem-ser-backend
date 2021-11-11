@@ -33,17 +33,18 @@ public class EnderecoService {
                 .collect(Collectors.toList());
     }
 
-//    public EnderecoDTO listByEndereco(Integer idEndereco) throws RegraDeNegocioException {
-//        EnderecoEntity enderecoRecuperado = enderecoRepository.listByEndereco(idEndereco);
-//        EnderecoDTO enderecoDTO = objectMapper.convertValue(enderecoRecuperado, EnderecoDTO.class);
-//        return enderecoDTO;
-//    }
+    public EnderecoDTO listByEndereco(Integer idEndereco) throws RegraDeNegocioException {
+        EnderecoEntity enderecoRecuperado = findById(idEndereco);
+        EnderecoDTO enderecoDTO = objectMapper.convertValue(enderecoRecuperado, EnderecoDTO.class);
+        return enderecoDTO;
+    }
 
-//    public List<EnderecoDTO> listByPessoa(Integer idPessoa) {
-//        return enderecoRepository.listByPessoa(idPessoa).stream()
-//                .map(endereco -> objectMapper.convertValue(endereco, EnderecoDTO.class))
-//                .collect(Collectors.toList());
-//    }
+    public List<EnderecoDTO> listByPessoa(Integer idPessoa) {
+        return enderecoRepository.searchByPessoa(idPessoa)
+                .stream()
+                .map(endereco -> objectMapper.convertValue(endereco, EnderecoDTO.class))
+                .collect(Collectors.toList());
+    }
 
     public EnderecoEntity findById(Integer idEndereco) throws RegraDeNegocioException {
         EnderecoEntity entity = enderecoRepository.findById(idEndereco)
