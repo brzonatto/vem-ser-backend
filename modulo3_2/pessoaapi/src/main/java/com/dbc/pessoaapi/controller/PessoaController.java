@@ -1,9 +1,6 @@
 package com.dbc.pessoaapi.controller;
 
-import com.dbc.pessoaapi.dto.PessoaContatoDTO;
-import com.dbc.pessoaapi.dto.PessoaCreateDTO;
-import com.dbc.pessoaapi.dto.PessoaDTO;
-import com.dbc.pessoaapi.dto.PessoaEnderecoDTO;
+import com.dbc.pessoaapi.dto.*;
 import com.dbc.pessoaapi.entity.PessoaEntity;
 import com.dbc.pessoaapi.exceptions.RegraDeNegocioException;
 import com.dbc.pessoaapi.repository.PessoaRepository;
@@ -144,5 +141,10 @@ public class PessoaController {
     @GetMapping("/search-by-without-endereco")
     public List<PessoaEntity> searchByWithoutEndereco() {
         return pessoaRepository.searchByWithoutEndereco();
+    }
+
+    @GetMapping("/list-completa")
+    public List<PessoaCompletaDTO> listCompleta(@RequestParam(value = "idPessoa", required = false) Integer idPessoa) {
+        return pessoaService.listCompleta(idPessoa);
     }
 }

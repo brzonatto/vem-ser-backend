@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import javax.mail.MessagingException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -151,5 +152,52 @@ public class PessoaService {
                 .collect(Collectors.toList());
     }
 
+    public List<PessoaCompletaDTO> listCompleta(Integer idPessoa) {
+        if (idPessoa != null) {
+            return pessoaRepository.findAll()
+                    .stream()
+                    .filter(pessoaEntity -> pessoaEntity.getIdPessoa().equals(idPessoa))
+                    .map(pessoa -> {
+                        PessoaDTO pessoaDTO = objectMapper.convertValue(pessoa, PessoaDTO.class);
+                        PessoaCompletaDTO pessoaCompletaDTO = new PessoaCompletaDTO();
+                        pessoaCompletaDTO.setPessoa(pessoaDTO);
+                        pessoaCompletaDTO.setEnderecos(
+                                pessoa.getEnderecos()
+                                        .stream()
+                                        .map(endereco -> objectMapper.convertValue(endereco, EnderecoDTO.class))
+                                        .collect(Collectors.toList())
+                        );
+                        pessoaCompletaDTO.setContatos(
+                                pessoa.getContatos()
+                                        .stream()
+                                        .map(contato -> objectMapper.convertValue(contato, ContatoDTO.class))
+                                        .collect(Collectors.toList())
+                        );
+                        return pessoaCompletaDTO;
+                    })
+                    .collect(Collectors.toList());
+        }
+        return pessoaRepository.findAll()
+                .stream()
+                .map(pessoa -> {
+                    PessoaDTO pessoaDTO = objectMapper.convertValue(pessoa, PessoaDTO.class);
+                    PessoaCompletaDTO pessoaCompletaDTO = new PessoaCompletaDTO();
+                    pessoaCompletaDTO.setPessoa(pessoaDTO);
+                    pessoaCompletaDTO.setEnderecos(
+                            pessoa.getEnderecos()
+                                    .stream()
+                                    .map(endereco -> objectMapper.convertValue(endereco, EnderecoDTO.class))
+                                    .collect(Collectors.toList())
+                    );
+                    pessoaCompletaDTO.setContatos(
+                            pessoa.getContatos()
+                                    .stream()
+                                    .map(contato -> objectMapper.convertValue(contato, ContatoDTO.class))
+                                    .collect(Collectors.toList())
+                    );
+                    return pessoaCompletaDTO;
+                })
+                .collect(Collectors.toList());
+    }
 
 }
