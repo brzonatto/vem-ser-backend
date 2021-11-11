@@ -80,7 +80,7 @@ public class PessoaService {
                 .collect(Collectors.toList());
     }
 
-    public List<PessoaContatoDTO> listWithContato(Integer idPessoa) {
+    public List<PessoaContatoDTO> listWithContato(Integer idPessoa) { //TODO OTIMIZAR
         if (idPessoa != null) {
             return pessoaRepository.findAll()
                     .stream()
@@ -116,7 +116,7 @@ public class PessoaService {
                 .collect(Collectors.toList());
     }
 
-    public List<PessoaEnderecoDTO> listWithEndereco(Integer idPessoa) {
+    public List<PessoaEnderecoDTO> listWithEndereco(Integer idPessoa) { //TODO OTIMIZAR
         if (idPessoa != null) {
             return pessoaRepository.findAll()
                     .stream()
@@ -152,7 +152,7 @@ public class PessoaService {
                 .collect(Collectors.toList());
     }
 
-    public List<PessoaCompletaDTO> listCompleta(Integer idPessoa) {
+    public List<PessoaCompletaDTO> listCompleta(Integer idPessoa) { //TODO OTIMIZAR
         if (idPessoa != null) {
             return pessoaRepository.findAll()
                     .stream()
