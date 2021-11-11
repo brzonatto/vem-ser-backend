@@ -1,12 +1,13 @@
 package com.dbc.pessoaapi.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Set;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+@Getter
+@Setter
 @Entity(name = "ENDERECO_PESSOA")
 public class EnderecoEntity {
     @Id
@@ -39,4 +40,8 @@ public class EnderecoEntity {
 
     @Column(name = "pais")
     private String pais;
+
+    @JsonIgnore
+    @ManyToMany(mappedBy = "enderecos", fetch = FetchType.LAZY)
+    private Set<PessoaEntity> pessoas;
 }

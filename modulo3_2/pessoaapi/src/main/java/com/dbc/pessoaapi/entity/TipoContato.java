@@ -6,8 +6,8 @@ public enum TipoContato {
     RESIDENCIAL,
     COMERCIAL;
 
-    @JsonValue
-    public int toValue() {
-        return ordinal();
-    }
+//    @JsonValue
+//    public int toValue() {
+//        return ordinal();
+//    }
 }

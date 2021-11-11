@@ -1,7 +1,6 @@
 package com.dbc.pessoaapi.service;
 
-import com.dbc.pessoaapi.dto.PessoaCreateDTO;
-import com.dbc.pessoaapi.dto.PessoaDTO;
+import com.dbc.pessoaapi.dto.*;
 import com.dbc.pessoaapi.entity.PessoaEntity;
 import com.dbc.pessoaapi.exceptions.RegraDeNegocioException;
 import com.dbc.pessoaapi.repository.PessoaRepository;
@@ -13,7 +12,6 @@ import org.springframework.stereotype.Service;
 import javax.mail.MessagingException;
 import java.io.IOException;
 import java.util.List;
-import java.util.Locale;
 import java.util.stream.Collectors;
 
 @Service
@@ -80,4 +78,78 @@ public class PessoaService {
                 .map(pessoa -> objectMapper.convertValue(pessoa, PessoaDTO.class))
                 .collect(Collectors.toList());
     }
+
+    public List<PessoaContatoDTO> listWithContato(Integer idPessoa) {
+        if (idPessoa != null) {
+            return pessoaRepository.findAll()
+                    .stream()
+                    .filter(pessoaEntity -> pessoaEntity.getIdPessoa().equals(idPessoa))
+                    .map(pessoa -> {
+                        PessoaDTO pessoaDTO = objectMapper.convertValue(pessoa, PessoaDTO.class);
+                        PessoaContatoDTO pessoaContatoDTO = new PessoaContatoDTO();
+                        pessoaContatoDTO.setPessoa(pessoaDTO);
+                        pessoaContatoDTO.setContatos(
+                                pessoa.getContatos()
+                                        .stream()
+                                        .map(contato -> objectMapper.convertValue(contato, ContatoDTO.class))
+                                        .collect(Collectors.toList())
+                        );
+                        return pessoaContatoDTO;
+                    })
+                    .collect(Collectors.toList());
+        }
+        return pessoaRepository.findAll()
+                .stream()
+                .map(pessoa -> {
+                    PessoaDTO pessoaDTO = objectMapper.convertValue(pessoa, PessoaDTO.class);
+                    PessoaContatoDTO pessoaContatoDTO = new PessoaContatoDTO();
+                    pessoaContatoDTO.setPessoa(pessoaDTO);
+                    pessoaContatoDTO.setContatos(
+                            pessoa.getContatos()
+                                    .stream()
+                                    .map(contato -> objectMapper.convertValue(contato, ContatoDTO.class))
+                                    .collect(Collectors.toList())
+                    );
+                    return pessoaContatoDTO;
+                })
+                .collect(Collectors.toList());
+    }
+
+    public List<PessoaEnderecoDTO> listWithEndereco(Integer idPessoa) {
+        if (idPessoa != null) {
+            return pessoaRepository.findAll()
+                    .stream()
+                    .filter(pessoaEntity -> pessoaEntity.getIdPessoa().equals(idPessoa))
+                    .map(pessoa -> {
+                        PessoaDTO pessoaDTO = objectMapper.convertValue(pessoa, PessoaDTO.class);
+                        PessoaEnderecoDTO pessoaEnderecoDTO = new PessoaEnderecoDTO();
+                        pessoaEnderecoDTO.setPessoa(pessoaDTO);
+                        pessoaEnderecoDTO.setEnderecos(
+                                pessoa.getEnderecos()
+                                        .stream()
+                                        .map(endereco -> objectMapper.convertValue(endereco, EnderecoDTO.class))
+                                        .collect(Collectors.toList())
+                        );
+                        return pessoaEnderecoDTO;
+                    })
+                    .collect(Collectors.toList());
+        }
+        return pessoaRepository.findAll()
+                .stream()
+                .map(pessoa -> {
+                    PessoaDTO pessoaDTO = objectMapper.convertValue(pessoa, PessoaDTO.class);
+                    PessoaEnderecoDTO pessoaEnderecoDTO = new PessoaEnderecoDTO();
+                    pessoaEnderecoDTO.setPessoa(pessoaDTO);
+                    pessoaEnderecoDTO.setEnderecos(
+                            pessoa.getEnderecos()
+                                    .stream()
+                                    .map(endereco -> objectMapper.convertValue(endereco, EnderecoDTO.class))
+                                    .collect(Collectors.toList())
+                    );
+                    return pessoaEnderecoDTO;
+                })
+                .collect(Collectors.toList());
+    }
+
+
 }

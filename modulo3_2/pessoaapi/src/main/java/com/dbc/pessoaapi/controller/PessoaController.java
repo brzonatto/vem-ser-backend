@@ -1,7 +1,9 @@
 package com.dbc.pessoaapi.controller;
 
+import com.dbc.pessoaapi.dto.PessoaContatoDTO;
 import com.dbc.pessoaapi.dto.PessoaCreateDTO;
 import com.dbc.pessoaapi.dto.PessoaDTO;
+import com.dbc.pessoaapi.dto.PessoaEnderecoDTO;
 import com.dbc.pessoaapi.entity.PessoaEntity;
 import com.dbc.pessoaapi.exceptions.RegraDeNegocioException;
 import com.dbc.pessoaapi.repository.PessoaRepository;
@@ -114,5 +116,33 @@ public class PessoaController {
             @RequestParam("start") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate start,
             @RequestParam("end") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate end) {
         return pessoaRepository.findByDataNascimentoBetween(start, end);
+    }
+
+    @GetMapping("/list-with-contato")
+    public List<PessoaContatoDTO> listWithContato(@RequestParam(value = "idPessoa", required = false) Integer idPessoa) {
+        return pessoaService.listWithContato(idPessoa);
+    }
+
+    @GetMapping("/list-with-endereco")
+    public List<PessoaEnderecoDTO> listWithEndereco(@RequestParam(value = "idPessoa", required = false) Integer idPessoa) {
+        return pessoaService.listWithEndereco(idPessoa);
+    }
+
+    @GetMapping("/search-by-data")
+    public List<PessoaEntity> searchByData(
+            @RequestParam("start") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate start,
+            @RequestParam("end") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate end) {
+        return pessoaRepository.searchByData(start, end);
+    }
+
+    @GetMapping("/search-contain-endereco")
+    public List<PessoaEntity> searchContainEndereco() {
+        return pessoaRepository.searchContainEndereco();
+    }
+
+
+    @GetMapping("/search-by-without-endereco")
+    public List<PessoaEntity> searchByWithoutEndereco() {
+        return pessoaRepository.searchByWithoutEndereco();
     }
 }

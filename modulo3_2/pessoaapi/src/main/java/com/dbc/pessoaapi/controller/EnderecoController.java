@@ -2,7 +2,9 @@ package com.dbc.pessoaapi.controller;
 
 import com.dbc.pessoaapi.dto.EnderecoCreateDTO;
 import com.dbc.pessoaapi.dto.EnderecoDTO;
+import com.dbc.pessoaapi.entity.EnderecoEntity;
 import com.dbc.pessoaapi.exceptions.RegraDeNegocioException;
+import com.dbc.pessoaapi.repository.EnderecoRepository;
 import com.dbc.pessoaapi.service.EnderecoService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Locale;
 
 @RestController
 @RequestMapping("/endereco")
@@ -22,6 +25,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class EnderecoController {
     private final EnderecoService enderecoService;
+    private final EnderecoRepository enderecoRepository;
 
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Endereço criado"),
@@ -95,5 +99,25 @@ public class EnderecoController {
         EnderecoDTO enderecoDTO = enderecoService.update(idEndereco, enderecoCreateDTO);
         log.info("endereço atualizado");
         return enderecoDTO;
+    }
+
+    @GetMapping("/search-by-pais")
+    public List<EnderecoEntity> searchByPais(@RequestParam("pais") String pais) {
+        return enderecoRepository.searchByPais(pais);
+    }
+
+    @GetMapping("/search-by-pessoa")
+    public List<EnderecoEntity> searchByPessoa(@RequestParam("idPessoa") Integer idPessoa) {
+        return enderecoRepository.searchByPessoa(idPessoa);
+    }
+
+    @GetMapping("/search-by-cidade-or-pais")
+    public List<EnderecoEntity> searchByCidadeOrPais(@RequestParam("cidadeOrPais") String cidadeOrPais) {
+        return enderecoRepository.searchByCidadeOrPais(cidadeOrPais.toUpperCase());
+    }
+
+    @GetMapping("/search-by-without-complemento")
+    public List<EnderecoEntity> searchByWithoutComplemento() {
+        return enderecoRepository.searchByWithoutComplemento();
     }
 }

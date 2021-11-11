@@ -2,6 +2,7 @@ package com.dbc.pessoaapi.repository;
 
 import com.dbc.pessoaapi.entity.PessoaEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
@@ -14,4 +15,22 @@ public interface PessoaRepository extends JpaRepository<PessoaEntity, Integer> {
     PessoaEntity findByCpf(String cpf);
 
     List<PessoaEntity> findByDataNascimentoBetween(LocalDate start, LocalDate end);
+
+    @Query("SELECT P " +
+            "FROM PESSOA P " +
+            "WHERE P.dataNascimento BETWEEN :start AND :end")
+    List<PessoaEntity> searchByData(LocalDate start, LocalDate end);
+
+    @Query("SELECT DISTINCT P " +
+            "FROM PESSOA P " +
+            "INNER JOIN P.enderecos E")
+    List<PessoaEntity> searchContainEndereco();
+
+    @Query(value = "SELECT * " +
+            "FROM PESSOA P " +
+            "WHERE NOT EXISTS " +
+            "(SELECT * " +
+            "FROM PESSOA_X_PESSOA_ENDERECO PPE " +
+            "WHERE P.ID_PESSOA = PPE.ID_PESSOA)", nativeQuery = true)
+    List<PessoaEntity> searchByWithoutEndereco();
 }

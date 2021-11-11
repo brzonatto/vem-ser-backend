@@ -1,10 +1,14 @@
 package com.dbc.pessoaapi.dto;
 
+import com.dbc.pessoaapi.entity.TipoContato;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.validation.constraints.*;
 
 @Data
@@ -12,13 +16,15 @@ import javax.validation.constraints.*;
 @NoArgsConstructor
 public class ContatoDTO {
     private Integer idContato;
+
+    @JsonIgnore
     private Integer idPessoa;
 
-    @NotNull
-    @Min(0)
-    @Max(1)
+//    @NotNull
+//    @Min(0)
+//    @Max(1)
     @ApiModelProperty("Tipo do contato - (1 - RESIDENCIAL, 2 - COMERCIAL)")
-    private Integer tipoContato;
+    private TipoContato tipoContato;
 
     @Size(max = 13, min = 1, message = "deve ter no máximo 13 números")
     @NotEmpty

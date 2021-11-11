@@ -2,7 +2,10 @@ package com.dbc.pessoaapi.controller;
 
 import com.dbc.pessoaapi.dto.ContatoCreateDTO;
 import com.dbc.pessoaapi.dto.ContatoDTO;
+import com.dbc.pessoaapi.entity.ContatoEntity;
+import com.dbc.pessoaapi.entity.TipoContato;
 import com.dbc.pessoaapi.exceptions.RegraDeNegocioException;
+import com.dbc.pessoaapi.repository.ContatoRepository;
 import com.dbc.pessoaapi.service.ContatoService;
 
 import io.swagger.annotations.ApiOperation;
@@ -13,6 +16,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -23,6 +28,7 @@ import java.util.List;
 @Slf4j
 public class ContatoController {
     private final ContatoService contatoService;
+    private final ContatoRepository contatoRepository;
 
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Contato criado"),
@@ -85,5 +91,15 @@ public class ContatoController {
         ContatoDTO contatoDTO = contatoService.update(idContato, contatoCreateDTO);
         log.info("contato atualizado");
         return contatoDTO;
+    }
+
+    @GetMapping("/search-by-tipo")
+    public List<ContatoEntity> searchByTipo(@RequestParam("tipo") TipoContato tipo) {
+        return contatoRepository.searchByTipo(tipo);
+    }
+
+    @GetMapping("/search-by-pessoa")
+    public List<ContatoEntity> searchByPessoa(@RequestParam("idPessoa") Integer idPessoa) {
+        return contatoRepository.searchByPessoa(idPessoa);
     }
 }
