@@ -112,8 +112,8 @@ public class EnderecoController {
     }
 
     @GetMapping("/search-by-cidade-or-pais")
-    public List<EnderecoEntity> searchByCidadeOrPais(@RequestParam("cidadeOrPais") String cidadeOrPais) {
-        return enderecoRepository.searchByCidadeOrPais(cidadeOrPais.toUpperCase());
+    public List<EnderecoEntity> searchByCidadeOrPais(@RequestParam(value = "cidade", required = false) String cidade, @RequestParam(value = "pais", required = false) String pais) {
+        return enderecoRepository.searchByCidadeOrPais(cidade, pais);
     }
 
     @GetMapping("/search-by-without-complemento")

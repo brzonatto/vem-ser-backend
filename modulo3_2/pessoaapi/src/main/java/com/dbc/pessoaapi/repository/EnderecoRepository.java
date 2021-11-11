@@ -22,8 +22,8 @@ public interface EnderecoRepository extends JpaRepository<EnderecoEntity, Intege
 
     @Query(value = "SELECT * " +
             "FROM ENDERECO_PESSOA E " +
-            "WHERE UPPER(E.PAIS) LIKE :cidadeOrPais OR UPPER(E.CIDADE) LIKE :cidadeOrPais", nativeQuery = true)
-    List<EnderecoEntity> searchByCidadeOrPais(String cidadeOrPais);
+            "WHERE UPPER(E.PAIS) LIKE UPPER(:pais) OR UPPER(E.CIDADE) LIKE UPPER(:cidade)", nativeQuery = true)
+    List<EnderecoEntity> searchByCidadeOrPais(String cidade, String pais);
 
     @Query(value = "SELECT * " +
             "FROM ENDERECO_PESSOA E " +
