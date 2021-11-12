@@ -1,10 +1,12 @@
 package com.dbc.pessoaapi.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 
 import javax.validation.constraints.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -33,4 +35,7 @@ public class PessoaDTO {
     @NotBlank
     @ApiModelProperty("E-mail da pessoa")
     private String email;
+
+    @JsonIgnore
+    private List<ContatoDTO> contatos;
 }
