@@ -1,5 +1,6 @@
 package com.dbc.pessoaapi.exceptions;
 
+import io.jsonwebtoken.SignatureException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -61,4 +62,24 @@ public class CustomGlobalExceptionHandler extends ResponseEntityExceptionHandler
         body.put("message", exception.getMessage());
         return new ResponseEntity<>(body, badRequest);
     }
+
+    @ExceptionHandler(SignatureException.class)
+    public ResponseEntity<Object> handleException(SignatureException exception,
+                                                  HttpServletRequest request) {
+        Map<String, Object> body = new LinkedHashMap<>();
+        body.put("timestamp", new Date());
+        final HttpStatus badRequest = HttpStatus.FORBIDDEN;
+        body.put("status", badRequest.value());
+        body.put("message", exception.getMessage());
+        return new ResponseEntity<>(body, badRequest);
+    }
+
+//    public ResponseEntity teste(RegraDeNegocioException exception) {
+//        Map<String, Object> body = new LinkedHashMap<>();
+//        body.put("timestamp", new Date());
+//        final HttpStatus badRequest = HttpStatus.BAD_REQUEST;
+//        body.put("status", badRequest.value());
+//        body.put("message", exception.getMessage());
+//        return new ResponseEntity<>(body, badRequest);
+//    }
 }
