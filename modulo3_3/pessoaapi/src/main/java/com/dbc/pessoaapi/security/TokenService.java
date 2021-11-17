@@ -1,7 +1,6 @@
 package com.dbc.pessoaapi.security;
 
 import com.dbc.pessoaapi.entity.UsuarioEntity;
-import com.dbc.pessoaapi.service.UsuarioService;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.RequiredArgsConstructor;

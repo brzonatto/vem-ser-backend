@@ -2,9 +2,7 @@ package com.dbc.pessoaapi.controller;
 
 import com.dbc.pessoaapi.dto.LoginDTO;
 import com.dbc.pessoaapi.entity.UsuarioEntity;
-import com.dbc.pessoaapi.exceptions.RegraDeNegocioException;
 import com.dbc.pessoaapi.security.TokenService;
-import com.dbc.pessoaapi.service.UsuarioService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -16,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/auth")
