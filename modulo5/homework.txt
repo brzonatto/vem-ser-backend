@@ -187,3 +187,158 @@ RES:
 }
 
 /////////////////////////////////////////////////////////////////////
+
+db.habilidade.insertMany([
+    {
+        "nome": "Super Crescimento",
+        "multiplicadorPoder": 1.5
+    },
+    {
+        "nome": "Chamas",
+        "multiplicadorPoder": 1.8
+    },
+    {
+        "nome": "Poder Solar",
+        "multiplicadorPoder": 2.1
+    },
+    {
+        "nome": "Clorofila",
+        "multiplicadorPoder": 1.5
+    },
+    {
+        "nome": "Torrente",
+        "multiplicadorPoder": 2.0
+    },
+    {
+        "nome": "Trovão",
+        "multiplicadorPoder": 2.2
+    }
+])
+
+RES:
+{
+    "acknowledged" : true,
+        "insertedIds" : [
+            ObjectId("619d43a7d96d9595e1bba13c"),
+            ObjectId("619d43a7d96d9595e1bba13d"),
+            ObjectId("619d43a7d96d9595e1bba13e"),
+            ObjectId("619d43a7d96d9595e1bba13f"),
+            ObjectId("619d43a7d96d9595e1bba140"),
+            ObjectId("619d43a7d96d9595e1bba141")
+        ]
+}
+
+///////////////////////////////////////////////////////
+
+db.pokemon.updateOne(
+    {
+        "numero": 1
+    },
+    {
+        $set: {
+            "tipo": [
+                "PLANTA",
+                "VENENOSO"
+            ]
+        }
+    }
+)
+
+RES:
+{
+    "acknowledged": true,
+        "matchedCount": 1,
+            "modifiedCount": 1
+}
+
+db.pokemon.updateOne(
+    {
+        "numero": 2
+    },
+    {
+        $set: {
+            "tipo": [
+                "PLANTA",
+                "VENENOSO"
+            ]
+        }
+    }
+)
+
+RES:
+{
+    "acknowledged": true,
+        "matchedCount": 1,
+            "modifiedCount": 1
+}
+
+db.pokemon.updateOne(
+    {
+        "numero": 3
+    },
+    {
+        $set: {
+            "tipo": [
+                "PLANTA",
+                "VENENOSO"
+            ]
+        }
+    }
+)
+
+RES:
+{
+    "acknowledged": true,
+        "matchedCount": 1,
+            "modifiedCount": 1
+}
+
+db.pokemon.updateOne(
+    {
+        "numero": 4
+    },
+    {
+        $set: {
+            "tipo": [
+                "FOGO"
+            ]
+        }
+    }
+)
+
+RES:
+{
+    "acknowledged": true,
+        "matchedCount": 1,
+            "modifiedCount": 1
+}
+
+//////////////////////////////////////
+
+db.pokemon.find({
+    "tipo": "FOGO"
+})
+
+db.pokemon.find({
+    "nome": /saur/
+})
+
+db.pokemon.find({
+    "nome": /[C-c]har/
+})
+
+db.pokemon.find({
+    "status.ataque": { $in: [80, 60] }
+})
+
+db.pokemon.find({    
+    "status.defesa": { $gte: 60 },
+    $or : [
+        {"isLendario": true},
+        {"altura" : {$lte: 1.5}}        
+    ]
+ })
+
+db.habilidade.find({
+    "multiplicadorPoder": {$gte: 1.8}
+})
