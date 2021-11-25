@@ -342,3 +342,15 @@ db.pokemon.find({
 db.habilidade.find({
     "multiplicadorPoder": {$gte: 1.8}
 })
+
+///////////////////////////////////////////////
+
+db.pokemon.aggregate( [
+    { $match: { tipo: 'VENENOSO' }},
+    { $group: {  _id: null, altura: {$sum:"$altura" }} }
+ ] )
+
+ db.pokemon.aggregate( [
+    { $match: { tipo: 'VENENOSO' }},
+    { $group: { _id: null, sumQuantity: {$avg: "$altura" }} }
+ ] )
