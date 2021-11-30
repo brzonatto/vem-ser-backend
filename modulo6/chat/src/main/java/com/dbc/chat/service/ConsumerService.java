@@ -12,6 +12,7 @@ import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Component
 @Slf4j
@@ -21,38 +22,28 @@ public class ConsumerService {
 
     @KafkaListener(
             topics = "${kafka.topic.geral-chat}",
-            groupId = "${kafka.group-geral-chat}",
+            groupId = "${kafka.group-id}",
             containerFactory = "listenerContainerFactoryEarliest",
             clientIdPrefix = "geral"
     )
     public void consumeChatGeral(@Payload String mensagem) throws JsonProcessingException {
         MensagemDTO mensagemDTO = objectMapper.readValue(mensagem, MensagemDTO.class);
-        log.info("{}/{}/{} {}:{}:{} - [{}] (geral): {}",
-                mensagemDTO.getDataCriacao().getDayOfMonth(),
-                mensagemDTO.getDataCriacao().getMonthValue(),
-                mensagemDTO.getDataCriacao().getYear(),
-                mensagemDTO.getDataCriacao().minusHours(3).getHour(),
-                mensagemDTO.getDataCriacao().getMinute(),
-                mensagemDTO.getDataCriacao().getSecond(),
+        log.info("{} [{}] (geral): {}",
+                mensagemDTO.getDataCriacao().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")),
                 mensagemDTO.getUsuario(),
                 mensagemDTO.getMensagem());
     }
 
     @KafkaListener(
             topics = "${kafka.topic.meu-chat}",
-            groupId = "${kafka.group-meu-chat}",
+            groupId = "${kafka.group-id}",
             containerFactory = "listenerContainerFactoryEarliest",
             clientIdPrefix = "private"
     )
     public void consumeMeuChat(@Payload String mensagem) throws JsonProcessingException {
         MensagemDTO mensagemDTO = objectMapper.readValue(mensagem, MensagemDTO.class);
-        log.info("{}/{}/{} {}:{}:{} - [{}] (privado): {}",
-                mensagemDTO.getDataCriacao().getDayOfMonth(),
-                mensagemDTO.getDataCriacao().getMonthValue(),
-                mensagemDTO.getDataCriacao().getYear(),
-                mensagemDTO.getDataCriacao().getHour(),
-                mensagemDTO.getDataCriacao().getMinute(),
-                mensagemDTO.getDataCriacao().getSecond(),
+        log.info("{} [{}] (privado): {}",
+                mensagemDTO.getDataCriacao().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")),
                 mensagemDTO.getUsuario(),
                 mensagemDTO.getMensagem());
     }
