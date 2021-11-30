@@ -22,13 +22,18 @@ public class SensorController {
         return consumerService.list();
     }
 
-    @GetMapping("/media")
+    @GetMapping("/media-velocidade")
     public MediaTodosDTO mediaVelocidadeTodos() {
         return consumerService.mediaVelocidadeTodos();
     }
 
+    @GetMapping("/media-rotacao")
+    public MediaTodosDTO mediaRotacaoTodos() {
+        return consumerService.mediaRotacaoTodos();
+    }
+
     @GetMapping("/total")
-    public TotalDTO total() {
-        return consumerService.total();
+    public TotalDTO count() {
+        return consumerService.count();
     }
 }

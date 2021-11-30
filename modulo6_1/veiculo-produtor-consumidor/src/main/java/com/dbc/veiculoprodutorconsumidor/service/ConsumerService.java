@@ -54,7 +54,13 @@ public class ConsumerService {
         return mediaTodosDTO;
     }
 
-    public TotalDTO total() {
+    public MediaTodosDTO mediaRotacaoTodos() {
+        MediaTodosDTO mediaTodosDTO = new MediaTodosDTO();
+        mediaTodosDTO.setMediaTotal(veiculoRepository.mediaRotacaoTodos());
+        return mediaTodosDTO;
+    }
+
+    public TotalDTO count() {
         TotalDTO totalDTO = new TotalDTO();
         totalDTO.setTotal(veiculoRepository.count());
         return totalDTO;
