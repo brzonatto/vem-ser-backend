@@ -13,7 +13,7 @@ public class ProdutorController {
     private final Producer producer;
 
     @PostMapping("/enviar")
-    private void enviar(String mensagem) {
+    public void enviar(String mensagem) {
         producer.sendMessage(mensagem);
     }
 }
