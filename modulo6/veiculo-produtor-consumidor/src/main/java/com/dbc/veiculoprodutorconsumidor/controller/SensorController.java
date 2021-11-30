@@ -1,6 +1,7 @@
 package com.dbc.veiculoprodutorconsumidor.controller;
 
 import com.dbc.veiculoprodutorconsumidor.dto.MediaTodosDTO;
+import com.dbc.veiculoprodutorconsumidor.dto.TotalDTO;
 import com.dbc.veiculoprodutorconsumidor.dto.VeiculoDTO;
 import com.dbc.veiculoprodutorconsumidor.service.ConsumerService;
 import lombok.RequiredArgsConstructor;
@@ -24,5 +25,10 @@ public class SensorController {
     @GetMapping("/media")
     public MediaTodosDTO mediaVelocidadeTodos() {
         return consumerService.mediaVelocidadeTodos();
+    }
+
+    @GetMapping("/total")
+    public TotalDTO total() {
+        return consumerService.total();
     }
 }

@@ -1,6 +1,7 @@
 package com.dbc.veiculoprodutorconsumidor.service;
 
 import com.dbc.veiculoprodutorconsumidor.dto.MediaTodosDTO;
+import com.dbc.veiculoprodutorconsumidor.dto.TotalDTO;
 import com.dbc.veiculoprodutorconsumidor.dto.VeiculoDTO;
 import com.dbc.veiculoprodutorconsumidor.entity.VeiculoEntity;
 import com.dbc.veiculoprodutorconsumidor.repository.VeiculoRepository;
@@ -51,5 +52,11 @@ public class ConsumerService {
         MediaTodosDTO mediaTodosDTO = new MediaTodosDTO();
         mediaTodosDTO.setMediaTotal(veiculoRepository.mediaVelocidadeTodos());
         return mediaTodosDTO;
+    }
+
+    public TotalDTO total() {
+        TotalDTO totalDTO = new TotalDTO();
+        totalDTO.setTotal(veiculoRepository.count());
+        return totalDTO;
     }
 }
