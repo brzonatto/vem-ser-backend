@@ -28,10 +28,12 @@ public class ConsumerService {
     )
     public void consumeChatGeral(@Payload String mensagem) throws JsonProcessingException {
         MensagemDTO mensagemDTO = objectMapper.readValue(mensagem, MensagemDTO.class);
-        log.info("{} [{}] (geral): {}",
-                mensagemDTO.getDataCriacao().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")),
-                mensagemDTO.getUsuario(),
-                mensagemDTO.getMensagem());
+        if(!mensagemDTO.getUsuario().equals("Brunno")) {
+            log.info("{} [{}] (geral): {}",
+                    mensagemDTO.getDataCriacao().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")),
+                    mensagemDTO.getUsuario(),
+                    mensagemDTO.getMensagem());
+        }
     }
 
     @KafkaListener(
