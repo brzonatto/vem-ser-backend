@@ -13,15 +13,6 @@
                 <tr>
                     <td align="center" valign="top" bgcolor="#d3be6c"
                         style="background-color: #d3be6c; font-family: Arial, Helvetica, sans-serif; font-size: 13px; color: #000000; padding: 0px 15px 10px 15px;">
-
-                        <div style="font-size: 48px; color:blue;">
-                            <b>Java Mail</b>
-                        </div>
-
-                        <div style="font-size: 24px; color: #555100;">
-                            <br> Sending Email using Spring Boot with <b>FreeMarker
-                                template !!!</b> <br>
-                        </div>
                         <div>
                             <br>"Sharing the knowledge is biggest learning" <br> <br>
                             <br> <br> Olá ${nome},

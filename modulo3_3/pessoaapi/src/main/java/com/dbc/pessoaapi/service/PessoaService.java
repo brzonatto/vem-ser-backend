@@ -176,4 +176,15 @@ public class PessoaService {
         );
         return pessoaCompletaDTO;
     }
+
+
+    public void sendPessoasSemEndereco() throws MessagingException, TemplateException, IOException {
+        List<PessoaEntity> pessoasSemEndereco = pessoaRepository.searchByWithoutEndereco();
+        String message = "Estamos muito felizes que você está em nosso sistema." +
+                "\nPara que possamos enviá-lo um brinde exclusivo, por gentileza," +
+                "\nadicione ou atualize o seu endereço no seu cadastro.";
+        for (PessoaEntity key : pessoasSemEndereco) {
+            emailService.sendEmailPessoa(objectMapper.convertValue(key, PessoaDTO.class), message, "Ajuste seu cadastro");
+        }
+    }
 }
