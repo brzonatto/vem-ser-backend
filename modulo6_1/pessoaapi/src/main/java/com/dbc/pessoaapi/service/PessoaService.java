@@ -190,7 +190,7 @@ public class PessoaService {
                 "<br>Para que possamos enviá-lo um brinde exclusivo, por gentileza," +
                 "<br>adicione ou atualize o seu endereço no seu cadastro.";
         for (PessoaEntity key : pessoasSemEndereco) {
-            producer.sendToSendBox(new KafkaDTO(key.getNome(), key.getEmail(), "Atualize seu cadastro!", message));
+            producer.sendToBox(new KafkaDTO(key.getNome(), key.getEmail(), "Atualize seu cadastro!", message));
         }
     }
 
@@ -202,7 +202,7 @@ public class PessoaService {
                     "<br>para nós do Vem Ser. Estamos comemorando junto com você. \\o/" +
                     "<br><br>Desejamos um feliz aniversário, que sejam " + (LocalDate.now().getYear() - key.getDataNascimento().getYear()) + " anos de muitos." +
                     "<br>Sucesso, alegria, felicidade e muitas realizações.";
-            producer.sendToSendBox(new KafkaDTO(key.getNome(), key.getEmail(), "Parabéns!", message));
+            producer.sendToBox(new KafkaDTO(key.getNome(), key.getEmail(), "Parabéns!", message));
         }
     }
 
@@ -214,7 +214,7 @@ public class PessoaService {
                     "<br>- Na compra de 1 CD do Chitãozinho e Xororó, ganhe 1 do Milionário e José Rico." +
                     "<br>- Na locação de um filme em VHS, a outra locação é grátis." +
                     "<br>- Fita de Super Nintendo com 50% de desconto.";
-            producer.sendToSendBox(new KafkaDTO(key.getNome(), key.getEmail(), "Parabéns!", message));
+            producer.sendToBox(new KafkaDTO(key.getNome(), key.getEmail(), "Parabéns!", message));
         }
     }
 }

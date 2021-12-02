@@ -1,13 +1,11 @@
 package com.dbc.pessoaapi.scheduler;
 
 import com.dbc.pessoaapi.service.PessoaService;
-import freemarker.template.TemplateException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import javax.mail.MessagingException;
 import java.io.IOException;
 
 @Component
@@ -26,7 +24,7 @@ public class Rotinas {
         pessoaService.sendAniversariante();
     }
 
-    @Scheduled(cron = "0 54 10 2 12 *")
+    @Scheduled(cron = "0 0 0 23 12 *")
     public void promo() throws IOException {
         pessoaService.sendPromo();
     }
