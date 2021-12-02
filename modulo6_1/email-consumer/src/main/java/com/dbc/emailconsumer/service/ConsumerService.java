@@ -29,6 +29,5 @@ public class ConsumerService {
         KafkaDTO kafkaDTO = objectMapper.readValue(mensagem, KafkaDTO.class);
         emailService.sendEmailPessoa(kafkaDTO);
         log.info("Mensagem enviada ao destinátario {}", kafkaDTO.getDestinatario());
-
     }
 }

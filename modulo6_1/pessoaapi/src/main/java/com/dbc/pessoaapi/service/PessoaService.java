@@ -208,12 +208,12 @@ public class PessoaService {
 
     public void sendPromo() throws JsonProcessingException {
         List<PessoaEntity> pessoas = pessoaRepository.findAll();
+        String message = "Selecionamos algumas das nossas super promoções de natal na nossa plataforma" +
+                "<br>especialmente para você:" +
+                "<br>- Na compra de 1 CD do Chitãozinho e Xororó, ganhe 1 do Milionário e José Rico." +
+                "<br>- Na locação de um filme em VHS, a outra locação é grátis." +
+                "<br>- Fita de Super Nintendo com 50% de desconto.";
         for (PessoaEntity key : pessoas) {
-            String message = "Selecionamos algumas das nossas super promoções de natal na nossa plataforma" +
-                    "<br>especialmente para você:" +
-                    "<br>- Na compra de 1 CD do Chitãozinho e Xororó, ganhe 1 do Milionário e José Rico." +
-                    "<br>- Na locação de um filme em VHS, a outra locação é grátis." +
-                    "<br>- Fita de Super Nintendo com 50% de desconto.";
             producer.sendToBox(new KafkaDTO(key.getNome(), key.getEmail(), "Parabéns!", message));
         }
     }
