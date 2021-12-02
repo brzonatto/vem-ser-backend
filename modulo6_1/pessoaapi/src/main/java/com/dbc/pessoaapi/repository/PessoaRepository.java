@@ -33,4 +33,9 @@ public interface PessoaRepository extends JpaRepository<PessoaEntity, Integer> {
             "FROM PESSOA_X_PESSOA_ENDERECO PPE " +
             "WHERE P.ID_PESSOA = PPE.ID_PESSOA)", nativeQuery = true)
     List<PessoaEntity> searchByWithoutEndereco();
+
+    @Query(value = "SELECT * " +
+            "FROM PESSOA P " +
+            "WHERE TO_CHAR(P.DATA_NASCIMENTO, 'DD/MM')  =  :data", nativeQuery = true)
+    List<PessoaEntity> searchAniversatiante(String data);
 }

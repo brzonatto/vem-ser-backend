@@ -13,16 +13,21 @@ import java.io.IOException;
 @Component
 @Slf4j
 @RequiredArgsConstructor
-public class RotinaPessoaSemEndereco {
+public class Rotinas {
     private final PessoaService pessoaService;
 
     @Scheduled(cron = "0 0 8,20 * * *")
-    public void pessoasSemEdereco() throws InterruptedException, MessagingException, TemplateException, IOException {
+    public void pessoasSemEdereco() throws IOException {
         pessoaService.sendPessoasSemEndereco();
     }
 
-    @Scheduled(cron = "0 0 0 23 12 ?")
-    public void meuPrimeiroScheduler() throws InterruptedException, MessagingException, TemplateException, IOException {
-        pessoaService.sendPessoasSemEndereco();
+    @Scheduled(cron = "0 0 8 * * *")
+    public void aniversariante() throws IOException {
+        pessoaService.sendAniversariante();
+    }
+
+    @Scheduled(cron = "0 54 10 2 12 *")
+    public void promo() throws IOException {
+        pessoaService.sendPromo();
     }
 }

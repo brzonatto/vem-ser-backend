@@ -8,4 +8,10 @@ public class WebSecurityConfigTest {
     public void generatePass() {
         System.out.println(new BCryptPasswordEncoder().encode("123"));
     }
+
+    @Test
+    public void teste() {
+
+
+    }
 }
